@@ -15,10 +15,10 @@
     <dimen name="micro">6sp</dimen>
 
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
-    <dimen name="nav_header_height">200dp</dimen>
+    <dimen name="nav_header_height">215dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="user_profile_picture_size">100dp</dimen>
+    <dimen name="user_profile_picture_size">115dp</dimen>
 
     <dimen name="text_header_size">20dp</dimen>
 
