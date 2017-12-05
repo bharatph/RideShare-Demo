@@ -8,13 +8,12 @@
     android:orientation="vertical"
     android:padding="@dimen/activity_vertical_margin">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/userImageView"
         android:layout_width="@dimen/user_profile_picture_size"
         android:layout_height="@dimen/user_profile_picture_size"
         android:layout_marginBottom="@dimen/tinyier"
-        android:src="@color/colorAccent"
-
+        android:src="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/user_username"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="rideshare.cz.com.rideshare.MainActivity">
+    tools:context="com.cz.rideshare.MainActivity">
 
 
     <include layout="@layout/content_main" />
@@ -21,21 +21,22 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             style="@style/Widget.AppCompat.Button.Small"
-            android:background="@android:color/transparent"
-            android:src="@drawable/hamburger_menu"
             android:tint="@color/colorAccent"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_toLeftOf="@id/fab"
+            android:layout_toRightOf="@id/button"
             android:backgroundTint="@color/colorAccent"/>
 
-        <android.support.design.widget.FloatingActionButton
+        <ImageButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            style="@style/Widget.AppCompat.Button.Small"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
