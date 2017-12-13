@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:background="@drawable/rideshare_gradient"
@@ -26,9 +25,8 @@
         app:menu="@menu/activity_main_drawer">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/listPreferredItemHeight"
-            android:paddingRight="@dimen/small"
-            android:paddingLeft="@dimen/small"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/small"
             android:layout_gravity="bottom">
             <ImageButton
                 android:id="@+id/sidebar_toggle_menu"

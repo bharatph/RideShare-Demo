@@ -18,7 +18,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/drop_shadow_rect"
         android:padding="@dimen/small">
@@ -28,7 +28,6 @@
             android:contentDescription="@string/menu_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/hamburger_menu"
@@ -39,11 +38,8 @@
             android:layout_height="wrap_content"
             android:text="@string/button_share_ride"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_toLeftOf="@id/fab"
             android:layout_toStartOf="@+id/fab"
-            android:layout_toRightOf="@id/sidebar_toggle"
             android:layout_toEndOf="@+id/sidebar_toggle"/>
 
         <android.support.v7.widget.AppCompatImageButton
@@ -54,7 +50,6 @@
             app:srcCompat="@drawable/center_map"
             android:tint="@color/colorAccent"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
