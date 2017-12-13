@@ -2,26 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_bar_main_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.cz.rideshare.MainActivity">
 
-
-    <include layout="@layout/content_main" />
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cz.rideshare.MapsActivity"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?android:attr/listPreferredItemHeight"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/activity_horizontal_margin">
-        <ImageButton
-            android:id="@+id/button"
+        android:background="@drawable/drop_shadow_rect"
+        android:padding="@dimen/small">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/sidebar_toggle"
+            android:contentDescription="@string/menu_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:background="@android:color/transparent"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            style="@style/Widget.AppCompat.Button.Small"
             app:srcCompat="@drawable/hamburger_menu"
             android:tint="@color/colorAccent"/>
 
@@ -30,19 +39,23 @@
             android:layout_height="wrap_content"
             android:text="@string/button_share_ride"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_toLeftOf="@id/fab"
-            android:layout_toRightOf="@id/button"
-            android:backgroundTint="@color/colorAccent"/>
+            android:layout_toStartOf="@+id/fab"
+            android:layout_toRightOf="@id/sidebar_toggle"
+            android:layout_toEndOf="@+id/sidebar_toggle"/>
 
-        <ImageButton
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/fab"
+            android:contentDescription="@string/center_map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Small"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/round_button"
-            android:layout_alignParentRight="true"/>
+            app:srcCompat="@drawable/center_map"
+            android:tint="@color/colorAccent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 </RelativeLayout>

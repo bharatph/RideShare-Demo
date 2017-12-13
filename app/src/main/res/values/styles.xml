@@ -1,10 +1,27 @@
 <resources>
+
+    <style name="AppTheme.RideShareImageButton" parent="Widget.AppCompat.Button.Small">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:tint">@color/translucent</item>
+    </style>
+
+    <style name="AppTheme.RideShareButton" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorPrimary</item>
+
+        <item name="android:imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
+        <item name="imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
+
+        <item name="android:buttonStyle">@style/AppTheme.RideShareButton</item>
+        <item name="buttonStyle">@style/AppTheme.RideShareButton</item>
     </style>
 
 
