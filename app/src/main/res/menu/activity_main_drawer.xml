@@ -6,7 +6,8 @@
             android:title="Book Rides" />
         <item
             android:id="@+id/nav_ride_history"
-            android:title="Ride History" />
+            android:title="Ride History"
+            />
         <item
             android:id="@+id/nav_emergency_contacts"
             android:title="Emergency Contacts" />
