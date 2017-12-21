@@ -16,7 +16,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorPrimary</item>
-
+        <item name="android:textColorHint">@color/colorPrimary</item>
         <item name="android:imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
         <item name="imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
 
@@ -29,5 +29,6 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
 
 </resources>
