@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/medium"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/ride_snapshot">
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/snapshotDriverImage"
+    android:layout_centerVertical="true"
+    android:src="@drawable/man"
+    android:elevation="@dimen/small"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginStart="@dimen/medium"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/snapshotDriverImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/snapshotDriverName"
+            style="@style/AppTheme.HeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alfred"/>
+        <TextView
+            android:id="@+id/snapshotDriverRating"
+            android:text="48 ratings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

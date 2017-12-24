@@ -17,6 +17,36 @@
         tools:context="com.cz.rideshare.MapsActivity"/>
 
     <RelativeLayout
+        android:layout_marginTop="@dimen/small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/fromEditor"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/small"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:padding="@dimen/medium"
+            android:elevation="@dimen/medium"
+            android:background="@android:color/white"
+            android:textColor="@color/contrastForegroundColor"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:textColor="@color/contrastForegroundColor"
+            android:background="@android:color/white"
+            android:elevation="@dimen/small"
+            android:layout_marginStart="@dimen/xxlarge"
+            android:layout_marginEnd="@dimen/xxlarge"
+            android:paddingTop="@dimen/large"
+            android:paddingLeft="@dimen/small"
+            android:paddingRight="@dimen/small"
+            android:paddingBottom="@dimen/small"
+            android:layout_below="@id/fromEditor"
+            android:id="@+id/toEditor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
