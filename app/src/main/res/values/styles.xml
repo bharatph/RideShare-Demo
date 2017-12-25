@@ -1,8 +1,8 @@
 <resources>
 
     <style name="AppTheme.RideShareImageButton" parent="Widget.AppCompat.ImageButton">
-        <item name="android:backgroundTint">@android:color/transparent</item>
-        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="background">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.HeaderTextView" parent="TextAppearance.AppCompat.Body1">
