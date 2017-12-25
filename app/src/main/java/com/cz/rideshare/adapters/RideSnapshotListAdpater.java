@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cz.rideshare.R;
+import com.cz.rideshare.model.RideSnapshot;
+
+import java.util.ArrayList;
 
 
 /**
@@ -14,6 +17,12 @@ import com.cz.rideshare.R;
  */
 
 public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotListAdpater.RideSnapshotViewHolder> {
+
+    private ArrayList<RideSnapshot> rideSnapshots = null;
+
+    public RideSnapshotListAdpater(ArrayList<RideSnapshot> rideSnapshots){
+        this.rideSnapshots = rideSnapshots;
+    }
 
     @Override
     public RideSnapshotViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,7 +36,7 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return rideSnapshots.size();
     }
 
     class RideSnapshotViewHolder extends RecyclerView.ViewHolder {
