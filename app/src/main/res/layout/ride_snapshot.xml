@@ -2,6 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    android:layout_margin="@dimen/small"
+    android:padding="@dimen/small"
+    android:elevation="@dimen/cardview_default_elevation"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -18,8 +22,8 @@
         android:layout_height="wrap_content"
         layout="@layout/horizontal_path"/>
     <include
+        android:layout_marginTop="@dimen/small"
         android:layout_below="@id/snapshot_telemetry"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/driver_quick_info"/>
