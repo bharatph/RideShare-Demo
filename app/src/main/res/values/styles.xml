@@ -1,22 +1,43 @@
 <resources>
 
     <style name="AppTheme.RideShareImageButton" parent="Widget.AppCompat.ImageButton">
-        <item name="android:backgroundTint">@android:color/transparent</item>
-        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="background">@android:color/transparent</item>
     </style>
 
+    <style name="AppTheme.HeaderTextView" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/contrastForegroundColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="AppTheme.RideShareButton" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme.Normal" parent="AppTheme">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/foregroundColor</item>
+        <item name="android:imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
+        <item name="imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
 
+        <item name="android:buttonStyle">@style/AppTheme.RideShareButton</item>
+        <item name="buttonStyle">@style/AppTheme.RideShareButton</item>
+    </style>
+    <style name="AppTheme.Contrast" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/contrastForegroundColor</item>
+        <item name="android:textColorHint">@color/foregroundColor</item>
         <item name="android:imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
         <item name="imageButtonStyle">@style/AppTheme.RideShareImageButton</item>
 
@@ -25,9 +46,5 @@
     </style>
 
 
-    <style name="AppTheme.FullScreen" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
 
 </resources>

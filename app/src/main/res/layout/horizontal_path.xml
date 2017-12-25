@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/medium"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/ride_snapshot">
+
+    <RelativeLayout
+        android:id="@+id/pathTime"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/large"
+        android:layout_marginBottom="@dimen/large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/snapshotStartTime"
+            android:textSize="@dimen/large"
+            android:layout_alignParentStart="true"
+            style="@style/AppTheme.HeaderTextView"
+            android:text="06:04"
+            android:textColor="@color/contrastForegroundColor"
+            android:maxLines="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/snapshotEndTime"
+            android:textColor="@color/contrastForegroundColor"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/large"
+            style="@style/AppTheme.HeaderTextView"
+            android:text="06:04"
+            android:maxLines="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/pathAddress"
+        android:layout_below="@id/pathTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/horizontal_path_src"
+            android:src="@drawable/round_button"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_toEndOf="@id/horizontal_path_src"
+            android:layout_toStartOf="@id/horizontal_path_target"
+            android:layout_width="wrap_content"
+            android:background="@drawable/dashed"
+            android:layout_centerVertical="true"
+            android:layout_height="5dp"/>
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizontal_path_target"
+            android:src="@drawable/round_button" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/small"
+        android:layout_below="@id/pathAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/snapshotStartAddr"
+            android:textSize="@dimen/large"
+            android:layout_alignParentStart="true"
+            android:text="Wayne Manor,
+1007 Mountain Drive,
+Gotham"
+            android:maxLines="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/snapshotEndAddr"
+            android:textAlignment="textEnd"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/large"
+            android:text="Wayne Manor,
+1007 Mountain Drive,
+Gotham"
+            android:maxLines="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</RelativeLayout>

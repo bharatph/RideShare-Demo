@@ -1,6 +1,7 @@
 package com.cz.rideshare;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
+    private final Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +83,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
                             Toast.makeText(LoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            //FIXME should return;
                         }
+                        Intent i = new Intent(context, MainActivity.class);
+                        //TODO putExtra
+                        startActivity(i);
                     }
                 });
 
