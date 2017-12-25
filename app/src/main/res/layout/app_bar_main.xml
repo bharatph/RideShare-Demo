@@ -59,20 +59,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/hamburger_menu"
-            android:tint="@color/colorAccent"/>
+            android:tint="@color/colorRideshare"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_share_ride"
-            android:elevation="@dimen/cardview_default_radius"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_toStartOf="@+id/fab"
+            android:layout_toLeftOf="@id/fab"
             android:layout_centerHorizontal="true"
-            android:layout_toEndOf="@+id/sidebar_toggle"/>
+            android:layout_toEndOf="@+id/sidebar_toggle"
+            android:layout_toRightOf="@id/sidebar_toggle"/>
 
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/fab"
@@ -80,9 +82,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/center_map"
-            android:tint="@color/colorAccent"
+            android:tint="@color/colorRideshare"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
 </RelativeLayout>

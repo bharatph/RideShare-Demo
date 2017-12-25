@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/small"
@@ -18,7 +19,7 @@
         />
     <TextView
         android:id="@+id/headerText"
-        android:text="@string/app_name"
+        android:text="@string/menu_ride_history"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@id/headerBackButton"
         app:layout_constraintRight_toRightOf="parent"
