@@ -20,7 +20,10 @@
     <dimen name="nav_header_height">215dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="user_profile_picture_size">115dp</dimen>
+    <dimen name="vehicle_type_image">32dp</dimen>
+
+    <dimen name="user_profile_picture">115dp</dimen>
+    <dimen name="user_profile_picture_small">64dp</dimen>
 
     <dimen name="text_header_size">20dp</dimen>
     <dimen name="main_header_size">50dp</dimen>

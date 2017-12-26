@@ -8,10 +8,9 @@
 <de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/snapshotDriverImage"
     android:layout_centerVertical="true"
-    android:src="@drawable/man"
     android:elevation="@dimen/small"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_width="@dimen/user_profile_picture_small"
+    android:layout_height="@dimen/user_profile_picture_small" />
     <LinearLayout
         android:layout_marginStart="@dimen/medium"
         android:layout_marginLeft="@dimen/medium"

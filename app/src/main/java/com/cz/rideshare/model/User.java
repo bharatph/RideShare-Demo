@@ -2,7 +2,6 @@ package com.cz.rideshare.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import android.media.Image;
 
 /**
 * @generated
@@ -32,7 +31,7 @@ public class User {
     /**
     * @generated
     */
-    private Image displayPicture;
+    private String displayPicture;
     
     /**
     * @generated
@@ -64,7 +63,7 @@ public class User {
     /**
      * @generated
      */
-    public User(int id, String name, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, Phone phoneNumber, Date memberSince, String bio, Image displayPicture, Date lastOnline) {
+    public User(int id, String name, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, Phone phoneNumber, Date memberSince, String bio, String displayPicture, Date lastOnline) {
         this.id = id;
         this.name = name;
         this.rating = rating;
@@ -142,14 +141,14 @@ public class User {
     /**
     * @generated
     */
-    public Image getDisplayPicture() {
+    public String getDisplayPicture() {
         return this.displayPicture;
     }
     
     /**
     * @generated
     */
-    public void setDisplayPicture(Image displayPicture) {
+    public void setDisplayPicture(String displayPicture) {
         this.displayPicture = displayPicture;
     }
     
