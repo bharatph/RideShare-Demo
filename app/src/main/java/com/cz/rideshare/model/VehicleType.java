@@ -16,14 +16,14 @@ public class VehicleType {
     /**
     * @generated
     */
-    private Image typeImage;
+    private String typeImage;
     
     
     
     /**
      * @generated
      */
-    public VehicleType(Image typeImage, String typeName) {
+    public VehicleType(String typeImage, String typeName) {
         this.typeImage = typeImage;
         this.typeName = typeName;
     }
@@ -47,14 +47,14 @@ public class VehicleType {
     /**
     * @generated
     */
-    public Image getTypeImage() {
+    public String getTypeImage() {
         return this.typeImage;
     }
     
     /**
     * @generated
     */
-    public void setTypeImage(Image typeImage) {
+    public void setTypeImage(String typeImage) {
         this.typeImage = typeImage;
     }
     

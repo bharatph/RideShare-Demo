@@ -1,102 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="@layout/ride_snapshot">
-    <RelativeLayout
+
+    <LinearLayout
         android:id="@+id/pathTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="@dimen/large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/snapshotStartTime"
-            android:textSize="@dimen/medium"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             style="@style/AppTheme.HeaderTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:maxLines="1"
             android:textColor="@color/contrastForegroundColor"
-            android:maxLines="3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/medium" />
+
         <TextView
             android:id="@+id/snapshotEndTime"
-            android:textColor="@color/contrastForegroundColor"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:textSize="@dimen/medium"
             style="@style/AppTheme.HeaderTextView"
-            android:maxLines="3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:maxLines="1"
+            android:textColor="@color/contrastForegroundColor"
+            android:textSize="@dimen/medium" />
 
-    </RelativeLayout>
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/pathAddress"
-        android:layout_below="@id/pathTime"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_centerVertical="true"
-            android:id="@+id/horizontal_path_src"
-            android:src="@drawable/node"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <View
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_toEndOf="@id/horizontal_path_src"
-            android:layout_toRightOf="@id/horizontal_path_src"
-            android:layout_toStartOf="@id/horizontal_path_target"
-            android:layout_toLeftOf="@id/horizontal_path_target"
-            android:layout_width="wrap_content"
-            android:background="@drawable/dashed"
-            android:layout_centerVertical="true"
-            android:layerType="software"
-            android:layout_height="4dp"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pathTime">
 
         <ImageView
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:id="@+id/horizontalPathSrc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/horizontal_path_target"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/node" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginStart="@dimen/small"
+            android:layout_toEndOf="@id/horizontalPathSrc"
+            android:layout_toLeftOf="@id/horizontalPathTarget"
+            android:layout_toRightOf="@id/horizontalPathSrc"
+            android:layout_toStartOf="@id/horizontalPathTarget"
+            android:background="@drawable/dashed"
+            android:layerType="software" />
+
+        <ImageView
+            android:id="@+id/horizontalPathTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:src="@drawable/node" />
     </RelativeLayout>
+
     <LinearLayout
-        android:layout_marginTop="@dimen/small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/pathAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="@dimen/small"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/snapshotStartAddr"
-            android:text="Wayne Manor,
-1007 Mountain Drive,
-Gotham"
-            android:layout_weight="0.5"
-            android:paddingRight="@dimen/medium"
-            android:paddingEnd="@dimen/medium"
-            android:maxLines="3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:maxLines="3"
+            android:paddingEnd="@dimen/medium"
+            android:paddingRight="@dimen/medium" />
+
         <TextView
             android:id="@+id/snapshotEndAddr"
-            android:textAlignment="textEnd"
-            android:paddingLeft="@dimen/medium"
-            android:paddingStart="@dimen/medium"
-            android:gravity="end"
-            android:ellipsize="end"
-            android:layout_weight="0.5"
-            android:text="Wayne Manor,
-1007 Mountain Drive,
-Gotham"
-            android:maxLines="3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:textAlignment="textEnd"
+            android:layout_gravity="end"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:maxLines="3"
+            android:textSize="@dimen/medium"  />
 
     </LinearLayout>
 </RelativeLayout>

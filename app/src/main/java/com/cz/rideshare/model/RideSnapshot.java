@@ -57,14 +57,17 @@ public class RideSnapshot {
     * @generated
     */
     private Date duration;
+
+    private float price;
     
     
     
     /**
      * @generated
      */
-    public RideSnapshot(int distance, Node start, ArrayList<Node> intermediates, Vehicle vehicle, ArrayList<User> collaborators, Date duration, Date timeStarted, Node end, Rating rating, User driver) {
+    public RideSnapshot(int distance, float price, Node start, ArrayList<Node> intermediates, Vehicle vehicle, ArrayList<User> collaborators, Date duration, Date timeStarted, Node end, Rating rating, User driver) {
         this.distance = distance;
+        this.price = price;
         this.start = start;
         this.intermediates = intermediates;
         this.vehicle = vehicle;
@@ -227,7 +230,13 @@ public class RideSnapshot {
         this.duration = duration;
     }
     
-    
+    public void setPrice(float price){
+        this.price = price;
+    }
+
+    public float getPrice(){
+        return this.price;
+    }
     
     
 }

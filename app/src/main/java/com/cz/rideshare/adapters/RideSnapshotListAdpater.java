@@ -2,16 +2,21 @@ package com.cz.rideshare.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.transition.CircularPropagation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.cz.rideshare.R;
 import com.cz.rideshare.model.RideSnapshot;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -22,7 +27,7 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
 
     private ArrayList<RideSnapshot> rideSnapshots = null;
 
-    public RideSnapshotListAdpater(ArrayList<RideSnapshot> rideSnapshots){
+    public RideSnapshotListAdpater(ArrayList<RideSnapshot> rideSnapshots) {
         this.rideSnapshots = rideSnapshots;
     }
 
@@ -35,7 +40,37 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
     @Override
     public void onBindViewHolder(RideSnapshotViewHolder holder, int position) {
         RideSnapshot rideSnapshot = rideSnapshots.get(position);
-        holder.date.setText(rideSnapshot.getTimeStarted().toString());
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.centerCrop();
+        if (holder.rideImage != null)
+            Glide.with(holder.rootView)
+                    .load(rideSnapshot.getVehicle().getVehicleType().getTypeImage())
+                    .apply(requestOptions)
+                    .into(holder.rideImage);
+        if (holder.rideType != null)
+            holder.rideType.setText(rideSnapshot.getVehicle().getVehicleType().getTypeName());
+        if (holder.date != null) holder.date.setText(rideSnapshot.getTimeStarted().toString()); //TODO Format
+        if (holder.price != null) holder.price.setText(String.valueOf(rideSnapshot.getPrice()));
+
+
+        if (holder.driverImage != null)
+            Glide.with(holder.rootView)
+                    .load(rideSnapshot.getDriver().getDisplayPicture())
+                    .apply(requestOptions)
+                    .into(holder.driverImage);
+        if (holder.driverName != null)
+            holder.driverName.setText(rideSnapshot.getDriver().getName());
+        if (holder.driverRating != null)
+            holder.driverRating.setText((int) Math.abs(rideSnapshot.getRating().getRating()) + " ratings");//FIXME
+
+        if (holder.startTime != null)
+            holder.startTime.setText(rideSnapshot.getTimeStarted().toString());  //TODO Format
+        if (holder.endTime != null)
+            holder.endTime.setText(rideSnapshot.getEnd().getTimeDelta().toString());  //TODO Format
+        if (holder.startAddr != null)
+            holder.startAddr.setText(rideSnapshot.getStart().getLocationName());
+        if (holder.endAddr != null) holder.endAddr.setText(rideSnapshot.getEnd().getLocationName());
+
     }
 
     @Override
@@ -44,16 +79,37 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
     }
 
     class RideSnapshotViewHolder extends RecyclerView.ViewHolder {
+        View rootView = null;
         ImageView rideImage = null;
         TextView rideType = null;
         TextView date = null;
         TextView price = null;
+
+        CircleImageView driverImage = null;
+        TextView driverName = null;
+        TextView driverRating = null;
+
+        TextView startTime = null;
+        TextView endTime = null;
+        TextView startAddr = null;
+        TextView endAddr = null;
+
         public RideSnapshotViewHolder(View itemView) {
             super(itemView);
+            this.rootView = itemView;
             rideImage = itemView.findViewById(R.id.snapshotRideImage);
             rideType = itemView.findViewById(R.id.snapshotRideType);
             date = itemView.findViewById(R.id.snapshotDate);
             price = itemView.findViewById(R.id.snapshotPrice);
+
+            driverImage = itemView.findViewById(R.id.snapshotDriverImage);
+            driverName = itemView.findViewById(R.id.snapshotDriverName);
+            driverRating = itemView.findViewById(R.id.snapshotDriverRating);
+
+            startTime = itemView.findViewById(R.id.snapshotStartTime);
+            endTime = itemView.findViewById(R.id.snapshotEndTime);
+            startAddr = itemView.findViewById(R.id.snapshotStartAddr);
+            endAddr = itemView.findViewById(R.id.snapshotEndAddr);
             //date = itemView.findViewById(R.id.snapshotDate);
         }
     }
