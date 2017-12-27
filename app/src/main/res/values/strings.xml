@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">RideShare</string>
-    <string name="user_name" >Username or Email-id</string>
+    <string name="user_name">Username or Email-id</string>
     <string name="password">Enter password</string>
     <string name="caption_access_request_notification">Please accept push notifications from us</string>
     <string name="text_access_request_notification">We will notify you when your ride is near to you</string>
@@ -55,6 +55,9 @@
     <string name="center_map">Center on map</string>
     <string name="settings">Settings</string>
 
-    <style name="ui_rating"> ratings</style>
+    <style name="ui_rating">ratings</style>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

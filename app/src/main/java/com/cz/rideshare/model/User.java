@@ -1,5 +1,7 @@
 package com.cz.rideshare.model;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,12 +18,12 @@ public class User {
     /**
     * @generated
     */
-    private int id;
+    private String id;
     
     /**
     * @generated
     */
-    private Phone phoneNumber;
+    private String phoneNumber;
     
     /**
     * @generated
@@ -31,7 +33,7 @@ public class User {
     /**
     * @generated
     */
-    private String displayPicture;
+    private Uri displayPicture;
     
     /**
     * @generated
@@ -63,7 +65,7 @@ public class User {
     /**
      * @generated
      */
-    public User(int id, String name, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, Phone phoneNumber, Date memberSince, String bio, String displayPicture, Date lastOnline) {
+    public User(String id, String name, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, String phoneNumber, Date memberSince, String bio, Uri displayPicture, Date lastOnline) {
         this.id = id;
         this.name = name;
         this.rating = rating;
@@ -95,14 +97,14 @@ public class User {
     /**
     * @generated
     */
-    public int getId() {
+    public String getId() {
         return this.id;
     }
     
     /**
     * @generated
     */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
     
@@ -110,14 +112,14 @@ public class User {
     /**
     * @generated
     */
-    public Phone getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
     
     /**
     * @generated
     */
-    public void setPhoneNumber(Phone phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     
@@ -141,14 +143,14 @@ public class User {
     /**
     * @generated
     */
-    public String getDisplayPicture() {
+    public Uri getDisplayPicture() {
         return this.displayPicture;
     }
     
     /**
     * @generated
     */
-    public void setDisplayPicture(String displayPicture) {
+    public void setDisplayPicture(Uri displayPicture) {
         this.displayPicture = displayPicture;
     }
     

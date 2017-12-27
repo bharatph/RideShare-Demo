@@ -2,23 +2,36 @@ package com.cz.rideshare;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.annotation.GlideOption;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,12 +39,20 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+import org.w3c.dom.Text;
 
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, SelectDate.OnFragmentInteractionListener {
+
+    private final Context context = this;
     private DrawerLayout drawer = null;
     private NavigationView navigationView = null;
     private ImageButton centerLocBtn = null;
+
+    private EditText editTextFrom = null;
+    private EditText editTextTo = null;
+
+    private Button rideShareButton = null;
 
 
     private GoogleMap mMap;
@@ -42,6 +63,10 @@ public class MainActivity extends AppCompatActivity
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         centerLocBtn = (ImageButton) findViewById(R.id.fab);
+        rideShareButton = findViewById(R.id.rideShareButton);
+
+        editTextFrom = findViewById(R.id.editTextFrom);
+        editTextTo = findViewById(R.id.editTextTo);
     }
 
 
@@ -57,13 +82,42 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
+    private void loadFromController() {
+        RequestOptions options = new RequestOptions();
+        options.centerCrop();
 
+        TextView user_txt = (TextView)navigationView.getHeaderView(0).findViewById(R.id.user_name);
+        ImageView user_image = (ImageView)navigationView.getHeaderView(0).findViewById(R.id.userImageView);
+
+        user_txt.setText(RideShareController.getInstance().user.getName());
+        Glide.with(navigationView.getHeaderView(0))
+                .load(RideShareController.getInstance().user.getDisplayPicture())
+                .apply(options)
+                .into(user_image);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialize();
+        loadFromController();
 
+        rideShareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SelectDate sd = SelectDate.newInstance();
+                sd.show(getSupportFragmentManager(), "fragment_select_date");
+            }
+        });
+
+        navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, ProfileActivity.class);
+                startActivity(i);
+            }
+        });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -77,6 +131,8 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -168,6 +224,11 @@ public class MainActivity extends AppCompatActivity
 //        }
 
         // Add a marker in Sydney and move the camera
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }

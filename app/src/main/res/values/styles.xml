@@ -10,7 +10,7 @@
         <item name="android:textStyle">bold</item>
     </style>
     <style name="AppTheme.RideShareButton" parent="Base.Widget.AppCompat.Button.Colored">
-        <item name="android:background">@color/colorRideshare</item>
+        <item name="android:background">@drawable/round_button</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -21,7 +21,7 @@
     </style>
     <!-- Base application theme. -->
     <style name="AppTheme.Normal" parent="AppTheme">
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorRideshare</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorPrimary</item>

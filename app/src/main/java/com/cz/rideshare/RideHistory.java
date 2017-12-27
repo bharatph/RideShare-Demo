@@ -1,22 +1,15 @@
 package com.cz.rideshare;
 
-import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.cz.rideshare.adapters.RideSnapshotListAdpater;
 import com.cz.rideshare.model.Gender;
 import com.cz.rideshare.model.Node;
-import com.cz.rideshare.model.Permission;
-import com.cz.rideshare.model.Phone;
 import com.cz.rideshare.model.Rating;
 import com.cz.rideshare.model.RideSnapshot;
 import com.cz.rideshare.model.User;
@@ -44,10 +37,10 @@ public class RideHistory extends AppCompatActivity {
 
         ///////////////////////////////////TODO Firebase Integration/////////////////////////////////////
 
-        User user = new User(78, "Someone", new Rating(5, 10f),
+        User user = new User("78", "Someone", new Rating(5, 10f),
                 Gender.MALE,
-                null, new Phone(98414037, 91),
-                new Date(), "dsfs", "https://www.latfusa.com/media/archive/20130529130146Ben_A__.jpg", new Date());
+                null, "+91 99999 99999",
+                new Date(), "dsfs", Uri.parse("https://www.latfusa.com/media/archive/20130529130146Ben_A__.jpg"), new Date());
         RideSnapshot rideSnapshot = new RideSnapshot(20, 365f,
                 new Node("RMK College", new Date(), new LatLng(45.00, 65.9)), null,
                 new Vehicle("Suzuki Honda",
