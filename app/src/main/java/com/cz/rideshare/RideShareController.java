@@ -13,7 +13,7 @@ class RideShareController {
         return ourInstance;
     }
 
-    public User user = new User(null, null, null, null, null, null, null, null, null, null);
+    public User user = new User(null, null, null, null, null, null, null, null, null, null, null);
 
     private RideShareController() {
     }

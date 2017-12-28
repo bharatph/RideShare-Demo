@@ -29,7 +29,8 @@ public class User {
     * @generated
     */
     private ArrayList<RideSnapshot> ridesOfferedSnapshot;
-    
+
+    private String email;
     /**
     * @generated
     */
@@ -65,9 +66,10 @@ public class User {
     /**
      * @generated
      */
-    public User(String id, String name, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, String phoneNumber, Date memberSince, String bio, Uri displayPicture, Date lastOnline) {
+    public User(String id, String name, String email, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, String phoneNumber, Date memberSince, String bio, Uri displayPicture, Date lastOnline) {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.rating = rating;
         this.gender = gender;
         this.ridesOfferedSnapshot = ridesOfferedSnapshot;
@@ -92,7 +94,15 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+
+    public String getEmail(){
+        return this.email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
     
     /**
     * @generated

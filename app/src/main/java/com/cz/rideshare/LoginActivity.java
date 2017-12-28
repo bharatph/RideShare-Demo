@@ -1,6 +1,7 @@
 package com.cz.rideshare;
 
 
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,15 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         mAuth = FirebaseAuth.getInstance();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseUser user = mAuth.getCurrentUser();
                 if(user!=null){
-                    RideShareController.getInstance().user = new User(user.getUid(), user.getDisplayName(), null, Gender.MALE, null,
-                            user.getPhoneNumber(), null, null, user.getPhotoUrl(), new Date(user.getMetadata().getLastSignInTimestamp()) );
+                    RideShareController.getInstance().user = new User(user.getUid(), user.getDisplayName(), user.getEmail(), null, Gender.MALE, null,
+                            user.getPhoneNumber(), null, null, user.getPhotoUrl(), new Date() );
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();

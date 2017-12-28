@@ -6,15 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends AppCompatActivity {
     private final Context context = this;
     private Button logoutButton = null;
+    private EditText emailEditText = null;
 
     void initialize(){
         logoutButton = findViewById(R.id.logoutButton);
+        emailEditText = findViewById(R.id.profileUserEmailEdit);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +32,6 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        emailEditText.setText(RideShareController.getInstance().user.getEmail());
     }
 }

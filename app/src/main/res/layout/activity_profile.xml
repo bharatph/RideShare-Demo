@@ -54,10 +54,10 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/profileUserEmailEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/mdtp_transparent_black"
-                android:hint="bharatvajph@gmail.com" />
+                android:backgroundTint="@color/mdtp_transparent_black" />
         </LinearLayout>
 
         <LinearLayout

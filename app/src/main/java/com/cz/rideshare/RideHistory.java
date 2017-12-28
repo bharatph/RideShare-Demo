@@ -37,7 +37,7 @@ public class RideHistory extends AppCompatActivity {
 
         ///////////////////////////////////TODO Firebase Integration/////////////////////////////////////
 
-        User user = new User("78", "Someone", new Rating(5, 10f),
+        User user = new User("78", "Someone", "someone@someone.com", new Rating(5, 10f),
                 Gender.MALE,
                 null, "+91 99999 99999",
                 new Date(), "dsfs", Uri.parse("https://www.latfusa.com/media/archive/20130529130146Ben_A__.jpg"), new Date());
