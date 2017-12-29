@@ -26,6 +26,9 @@
         <TextView
             android:id="@+id/snapshotEndTime"
             style="@style/AppTheme.HeaderTextView"
+            android:gravity="end"
+            android:textAlignment="gravity"
+            android:textDirection="rtl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -92,8 +95,8 @@
         <TextView
             android:id="@+id/snapshotEndAddr"
             android:layout_width="0dp"
-            android:textAlignment="textEnd"
-            android:layout_gravity="end"
+            android:textAlignment="gravity"
+            android:gravity="end"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:maxLines="3"

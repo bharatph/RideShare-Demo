@@ -1,6 +1,7 @@
 package com.cz.rideshare;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -24,6 +25,7 @@ public class SelectDate extends DialogFragment {
     private String mParam1;
     private String mParam2;
 
+    private final DialogFragment dialogFragment = this;
     private OnFragmentInteractionListener mListener;
 
     public SelectDate() {
@@ -50,7 +52,15 @@ public class SelectDate extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_select_time, container, false);
+        View fragmentRoot =  inflater.inflate(R.layout.fragment_select_time, container, false);
+        View btn = fragmentRoot.findViewById(R.id.dateSubmitButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(dialogFragment.getContext(), FilterRide.class));
+            }
+        });
+        return fragmentRoot;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

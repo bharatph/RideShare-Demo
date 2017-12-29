@@ -1,5 +1,7 @@
 package com.cz.rideshare.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.transition.CircularPropagation;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.cz.rideshare.R;
+import com.cz.rideshare.RideDetailed;
 import com.cz.rideshare.model.RideSnapshot;
 
 import java.util.ArrayList;
@@ -26,8 +29,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotListAdpater.RideSnapshotViewHolder> {
 
     private ArrayList<RideSnapshot> rideSnapshots = null;
+    private Context context = null;
 
-    public RideSnapshotListAdpater(ArrayList<RideSnapshot> rideSnapshots) {
+    public RideSnapshotListAdpater(Context context, ArrayList<RideSnapshot> rideSnapshots) {
+        this.context = context;
         this.rideSnapshots = rideSnapshots;
     }
 
@@ -96,6 +101,13 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
 
         public RideSnapshotViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, RideDetailed.class);
+                    context.startActivity(i);
+                }
+            });
             this.rootView = itemView;
             rideImage = itemView.findViewById(R.id.snapshotRideImage);
             rideType = itemView.findViewById(R.id.snapshotRideType);
