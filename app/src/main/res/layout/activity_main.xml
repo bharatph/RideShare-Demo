@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/small"
             android:layout_gravity="bottom">
-            <ImageButton
-                android:id="@+id/sidebar_toggle_menu"
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/sidebarToggleOnNavBar"
                 android:contentDescription="@string/menu_book_rides"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -41,8 +41,8 @@
                 android:id="@+id/sos_button_menu"
                 android:text="@string/button_sos"
                 android:background="@drawable/round_button_sos"
-                android:layout_toRightOf="@id/sidebar_toggle_menu"
-                android:layout_toEndOf="@+id/sidebar_toggle_menu"
+                android:layout_toRightOf="@id/sidebarToggleOnNavBar"
+                android:layout_toEndOf="@+id/sidebarToggleOnNavBar"
                 android:layout_toLeftOf="@+id/settings_btn"
                 android:layout_toStartOf="@+id/settings_btn"
                 android:layout_marginLeft="@dimen/xxlarge"

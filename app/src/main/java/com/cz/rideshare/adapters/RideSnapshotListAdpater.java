@@ -47,6 +47,15 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
         RideSnapshot rideSnapshot = rideSnapshots.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.centerCrop();
+
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, RideDetailed.class);
+                context.startActivity(i);
+            }
+        });
+
         if (holder.rideImage != null)
             Glide.with(holder.rootView)
                     .load(rideSnapshot.getVehicle().getVehicleType().getTypeImage())
@@ -101,13 +110,6 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
 
         public RideSnapshotViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(context, RideDetailed.class);
-                    context.startActivity(i);
-                }
-            });
             this.rootView = itemView;
             rideImage = itemView.findViewById(R.id.snapshotRideImage);
             rideType = itemView.findViewById(R.id.snapshotRideType);
@@ -122,7 +124,6 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
             endTime = itemView.findViewById(R.id.snapshotEndTime);
             startAddr = itemView.findViewById(R.id.snapshotStartAddr);
             endAddr = itemView.findViewById(R.id.snapshotEndAddr);
-            //date = itemView.findViewById(R.id.snapshotDate);
         }
     }
 }

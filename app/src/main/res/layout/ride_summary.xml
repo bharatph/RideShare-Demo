@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     android:theme="@style/AppTheme.Contrast"
     android:background="@drawable/round_button_white"
     android:padding="@dimen/large"
     android:elevation="@dimen/cardview_default_elevation"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
 <TextView
     style="@style/TextAppearance.AppCompat.Headline"
@@ -12,4 +13,52 @@
     android:text="Ride Summary"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
-</android.support.constraint.ConstraintLayout>
+
+    <include layout="@layout/vertical_path"/>
+    <include layout="@layout/vertical_path"/>
+    <include layout="@layout/vertical_path"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:text="Distance travelled" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:gravity="end"
+            android:text="347km"
+            android:textAlignment="gravity"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:text="Duration" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:gravity="end"
+            android:text="07h 20m"
+            android:textAlignment="gravity"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

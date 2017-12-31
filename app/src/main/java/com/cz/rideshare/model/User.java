@@ -60,13 +60,15 @@ public class User {
     * @generated
     */
     private Date lastOnline;
-    
+
+    private ArrayList<Verification> verifications;
     
     
     /**
      * @generated
      */
-    public User(String id, String name, String email, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, String phoneNumber, Date memberSince, String bio, Uri displayPicture, Date lastOnline) {
+    public User(String id, String name, String email, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, String phoneNumber,
+                Date memberSince, String bio, Uri displayPicture, Date lastOnline, ArrayList<Verification> verifications) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -78,6 +80,7 @@ public class User {
         this.bio = bio;
         this.displayPicture = displayPicture;
         this.lastOnline = lastOnline;
+        this.verifications = verifications;
     }
     
 
@@ -117,8 +120,15 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
-    
-    
+
+    public ArrayList<Verification> getVerifications() {
+        return verifications;
+    }
+
+    public void setVerifications(ArrayList<Verification> verifications) {
+        this.verifications = verifications;
+    }
+
     /**
     * @generated
     */

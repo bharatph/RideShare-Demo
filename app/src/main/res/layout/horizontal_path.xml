@@ -51,7 +51,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/node" />
+            android:src="@drawable/node_hollow" />
 
         <View
             android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/node" />
+            android:src="@drawable/node_complete" />
     </RelativeLayout>
 
     <LinearLayout
@@ -99,8 +99,7 @@
             android:gravity="end"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:maxLines="3"
-            android:textSize="@dimen/medium"  />
+            android:maxLines="3" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -3,9 +3,9 @@
     package="com.cz.rideshare">
 
     <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         The ACCESS_COARSE/FINE_LOCATverificationsions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         locatverificationsions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -29,13 +29,8 @@
         </activity>
         <activity
             android:name=".RideHistory"
-
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Contrast">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!--

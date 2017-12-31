@@ -15,8 +15,10 @@ import com.cz.rideshare.model.RideSnapshot;
 import com.cz.rideshare.model.User;
 import com.cz.rideshare.model.Vehicle;
 import com.cz.rideshare.model.VehicleType;
+import com.cz.rideshare.model.Verification;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.nio.channels.OverlappingFileLockException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,7 +42,7 @@ public class RideHistory extends AppCompatActivity {
         User user = new User("78", "Someone", "someone@someone.com", new Rating(5, 10f),
                 Gender.MALE,
                 null, "+91 99999 99999",
-                new Date(), "dsfs", Uri.parse("https://www.latfusa.com/media/archive/20130529130146Ben_A__.jpg"), new Date());
+                new Date(), "dsfs", Uri.parse("https://www.latfusa.com/media/archive/20130529130146Ben_A__.jpg"), new Date(), null);
         RideSnapshot rideSnapshot = new RideSnapshot(20, 365f,
                 new Node("RMK College", new Date(), new LatLng(45.00, 65.9)), null,
                 new Vehicle("Suzuki Honda",

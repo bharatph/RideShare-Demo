@@ -2,24 +2,21 @@ package com.cz.rideshare;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageButton;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +26,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
-import com.bumptech.glide.annotation.GlideOption;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,8 +33,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, SelectDate.OnFragmentInteractionListener {
@@ -53,17 +46,24 @@ public class MainActivity extends AppCompatActivity
     private EditText editTextTo = null;
 
     private Button rideShareButton = null;
+    private AppCompatImageButton sidebarToggleOnMap = null;
+    private AppCompatImageButton sidebarToggleOnNavBar = null;
+    private AppCompatImageButton centerLocationButton = null;
 
 
     private GoogleMap mMap;
     LocationListener locationListener;
     LocationManager locationManager;
 
-    void initialize(){
+    void initialize() {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        centerLocBtn = (ImageButton) findViewById(R.id.fab);
+        centerLocBtn = (ImageButton) findViewById(R.id.centerLocationButton);
+
         rideShareButton = findViewById(R.id.rideShareButton);
+        centerLocationButton = findViewById(R.id.centerLocationButton);
+        sidebarToggleOnMap = findViewById(R.id.sidebarToggleOnMap);
+        sidebarToggleOnNavBar = findViewById(R.id.sidebarToggleOnNavBar);
 
         editTextFrom = findViewById(R.id.editTextFrom);
         editTextTo = findViewById(R.id.editTextTo);
@@ -75,19 +75,20 @@ public class MainActivity extends AppCompatActivity
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults.length > 0) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
                 }
             }
         }
     }
+
     private void loadFromController() {
         RequestOptions options = new RequestOptions();
         options.centerCrop();
 
-        TextView user_txt = (TextView)navigationView.getHeaderView(0).findViewById(R.id.user_name);
-        ImageView user_image = (ImageView)navigationView.getHeaderView(0).findViewById(R.id.userImageView);
+        TextView user_txt = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name);
+        ImageView user_image = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.userImageView);
 
         user_txt.setText(RideShareController.getInstance().user.getName());
         Glide.with(navigationView.getHeaderView(0))
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity
                 .into(user_image);
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +110,13 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 SelectDate sd = SelectDate.newInstance();
                 sd.show(getSupportFragmentManager(), "fragment_select_date");
+            }
+        });
+
+        sidebarToggleOnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO Center Map
             }
         });
 
@@ -125,23 +134,38 @@ public class MainActivity extends AppCompatActivity
         centerLocBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //TODO Center Map
+            }
+        });
+        sidebarToggleOnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
+        sidebarToggleOnNavBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.closeDrawer(GravityCompat.START);
             }
         });
 
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-
-
-    @Override
-    public void onBackPressed() {
+    void sidebarToggle(View view) {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        sidebarToggle(null);
     }
 
     @Override
@@ -161,7 +185,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_support) {
 
         }
-        if(i != null){
+        if (i != null) {
             startActivity(i);
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -179,8 +203,8 @@ public class MainActivity extends AppCompatActivity
 
                 LatLng sydney = new LatLng(location.getLatitude(), location.getLongitude());
                 mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(sydney).title("Your location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,17.0f));
+                mMap.addMarker(new MarkerOptions().position(sydney).title("From"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17.0f));
 
             }
 
@@ -207,14 +231,12 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        }
 //        else {
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
-        }
-        else {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        } else {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-            Location lastLocation=locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if(lastLocation != null) {
+            Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (lastLocation != null) {
                 LatLng sydney = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(sydney).title("Your Location"));

@@ -17,26 +17,32 @@
         tools:context="com.cz.rideshare.MapsActivity"/>
 
     <RelativeLayout
+        android:theme="@style/AppTheme.Contrast"
         android:layout_marginTop="@dimen/small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/editTextFrom"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/small"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:padding="@dimen/medium"
-            android:elevation="@dimen/medium"
-            android:background="@android:color/white"
-            android:textColor="@color/contrastForegroundColor"
-            android:layout_height="wrap_content" />
+            <EditText
+                android:background="@android:color/white"
+                android:paddingLeft="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:paddingTop="@dimen/small"
+                android:paddingBottom="@dimen/small"
+                android:paddingRight="@dimen/small"
+                android:id="@+id/editTextFrom"
+                android:layout_width="match_parent"
+                android:maxLines="1"
+                android:elevation="@dimen/medium"
+                android:textColor="@color/contrastForegroundColor"
+                android:layout_height="wrap_content" />
         <EditText
             android:textColor="@color/contrastForegroundColor"
             android:background="@android:color/white"
             android:elevation="@dimen/small"
             android:layout_marginStart="@dimen/xxlarge"
             android:layout_marginEnd="@dimen/xxlarge"
+            android:maxLines="1"
             android:paddingTop="@dimen/large"
             android:paddingLeft="@dimen/small"
             android:paddingRight="@dimen/small"
@@ -50,14 +56,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/drop_shadow_rect"
         android:padding="@dimen/small">
 
         <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/sidebar_toggle"
+            android:id="@+id/sidebarToggleOnMap"
+            android:background="@drawable/radial_shadow"
             android:contentDescription="@string/menu_toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -66,22 +72,23 @@
 
         <Button
             android:id="@+id/rideShareButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/button_share_ride"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_toStartOf="@+id/fab"
-            android:layout_toLeftOf="@id/fab"
+            android:layout_toStartOf="@+id/centerLocationButton"
+            android:layout_toLeftOf="@id/centerLocationButton"
             android:layout_centerHorizontal="true"
-            android:layout_toEndOf="@+id/sidebar_toggle"
-            android:layout_toRightOf="@id/sidebar_toggle"/>
+            android:layout_toEndOf="@+id/sidebarToggleOnMap"
+            android:layout_toRightOf="@id/sidebarToggleOnMap"/>
 
         <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/fab"
+            android:id="@+id/centerLocationButton"
+            android:background="@drawable/radial_shadow"
             android:contentDescription="@string/center_map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             app:srcCompat="@drawable/center_map"
             android:tint="@color/colorRideshare"
             android:layout_centerVertical="true"

@@ -7,27 +7,35 @@ import android.media.Image;
 * @generated
 */
 public class Permission {
-    
+
     /**
     * @generated
     */
     private String permissionName;
-    
+
     /**
     * @generated
     */
-    private Image permissionImage;
-    
-    
-    
+    private String permissionImage;
+
+    private boolean isAllowed = false;
+
+
     /**
      * @generated
      */
-    public Permission(String permissionName, Image permissionImage) {
+    public Permission(String permissionName, String permissionImage) {
         this.permissionName = permissionName;
         this.permissionImage = permissionImage;
     }
-    
+
+    public boolean getIsAllowed() {
+        return isAllowed;
+    }
+
+    public void setIsAllowed(boolean isAllowed) {
+        this.isAllowed = isAllowed;
+    }
 
     /**
     * @generated
@@ -35,26 +43,26 @@ public class Permission {
     public String getPermissionName() {
         return this.permissionName;
     }
-    
+
     /**
     * @generated
     */
     public void setPermissionName(String permissionName) {
         this.permissionName = permissionName;
     }
-    
-    
+
+
     /**
     * @generated
     */
-    public Image getPermissionImage() {
+    public String getPermissionImage() {
         return this.permissionImage;
     }
-    
+
     /**
     * @generated
     */
-    public void setPermissionImage(Image permissionImage) {
+    public void setPermissionImage(String permissionImage) {
         this.permissionImage = permissionImage;
     }
     
