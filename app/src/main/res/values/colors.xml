@@ -14,8 +14,14 @@
     <color name="translucent">#91ffffff</color>
 
     <color name="error_light">#e74c3c</color>
+
     <color name="error_dark">#c0392b</color>
 
     <color name="success_light">#2ecc71</color>
+
     <color name="success_dark">#27ae60</color>
+
+    <color name="grey_100">#F5F5F5</color>
+
+    <color name="grey_300">#E0E0E0</color>
 </resources>
