@@ -42,8 +42,8 @@
 
     <string name="header_profile">Profile</string>
     <string name="caption_user_email">e-mail</string>
-    <string name="caption_user_mobile">mobile</string>
-    <string name="hint_mobile">enter mobile number</string>
+    <string name="caption_user_mobile">phone</string>
+    <string name="hint_mobile">XXXXX XXXXX</string>
     <string name="button_password_change">Change Password</string>
     <string name="button_sign_up">Sign Up</string>
     <string name="button_logout">Logout</string>
@@ -65,5 +65,6 @@
     <string name="start_phone_auth">Start</string>
     <string name="verify_phone_auth">Verify</string>
     <string name="resend_phone_auth">Resend</string>
-
+    <string name="rideshare_phone_info">Enter your phone number to proceed</string>
+    <string name="skip_login_caption">skip this step</string>
 </resources>

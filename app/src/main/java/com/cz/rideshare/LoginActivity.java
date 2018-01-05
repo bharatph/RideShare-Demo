@@ -13,7 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
+import com.cz.rideshare.model.Gender;
+import com.cz.rideshare.model.User;
+import com.cz.rideshare.model.Verification;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -25,6 +29,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
@@ -32,7 +38,8 @@ public class LoginActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     EditText mPhoneNumberField, mVerificationField;
-    Button mStartButton, mVerifyButton, mResendButton;
+    ImageButton mStartButton, mVerifyButton, mResendButton;
+    Button skipLoginBtn = null;
 
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
@@ -49,13 +56,15 @@ public class LoginActivity extends AppCompatActivity implements
         mPhoneNumberField = (EditText) findViewById(R.id.field_phone_number);
         mVerificationField = (EditText) findViewById(R.id.field_verification_code);
 
-        mStartButton = (Button) findViewById(R.id.button_start_verification);
-        mVerifyButton = (Button) findViewById(R.id.button_verify_phone);
-        mResendButton = (Button) findViewById(R.id.button_resend);
+        mStartButton = findViewById(R.id.button_start_verification);
+        //mVerifyButton = (Button) findViewById(R.id.button_verify_phone);
+        //mResendButton = (Button) findViewById(R.id.button_resend);
+        skipLoginBtn = findViewById(R.id.skip_login);
 
         mStartButton.setOnClickListener(this);
-        mVerifyButton.setOnClickListener(this);
-        mResendButton.setOnClickListener(this);
+        //mVerifyButton.setOnClickListener(this);
+        //mResendButton.setOnClickListener(this);
+        skipLoginBtn.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -144,10 +153,21 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            startActivity(new Intent(this, MainActivity.class));
+        FirebaseUser user = mAuth.getCurrentUser();
+        //TODO FIREBASE INTEGRATION
+        ArrayList<Verification> verifications = new ArrayList<Verification>();
+        verifications.add(new Verification("Mobile Number Verified", true));
+        verifications.add(new Verification("Email Verified", true));
+        verifications.add(new Verification("Licence Verified", false));
+        verifications.add(new Verification("208 Facebook Friends", true));
+        if (user != null) {
+            RideShareController.getInstance().user = new User(user.getUid(), user.getDisplayName(), user.getEmail(), null, Gender.MALE, null,
+                    user.getPhoneNumber(), null, null, user.getPhotoUrl(), new Date(), verifications);
+            //TODO END
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
             finish();
+            return;
         }
     }
 
@@ -160,6 +180,7 @@ public class LoginActivity extends AppCompatActivity implements
                 }
                 startPhoneNumberVerification(mPhoneNumberField.getText().toString());
                 break;
+                /*
             case R.id.button_verify_phone:
                 String code = mVerificationField.getText().toString();
                 if (TextUtils.isEmpty(code)) {
@@ -171,6 +192,11 @@ public class LoginActivity extends AppCompatActivity implements
                 break;
             case R.id.button_resend:
                 resendVerificationCode(mPhoneNumberField.getText().toString(), mResendToken);
+                break;
+                */
+            case R.id.skip_login:
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
                 break;
         }
 

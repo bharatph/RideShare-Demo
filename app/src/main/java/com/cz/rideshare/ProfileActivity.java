@@ -14,10 +14,12 @@ public class ProfileActivity extends AppCompatActivity {
     private final Context context = this;
     private Button logoutButton = null;
     private EditText emailEditText = null;
+    private EditText phoneEditText = null;
 
     void initialize(){
         logoutButton = findViewById(R.id.logoutButton);
         emailEditText = findViewById(R.id.profileUserEmailEdit);
+        phoneEditText = findViewById(R.id.profileUserEmailEdit);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         emailEditText.setText(RideShareController.getInstance().user.getEmail());
+        phoneEditText.setText(RideShareController.getInstance().user.getPhoneNumber());
     }
 }
