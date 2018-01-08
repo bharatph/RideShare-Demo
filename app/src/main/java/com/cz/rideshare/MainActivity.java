@@ -162,6 +162,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    void bookRides(){
+        rideShareButton.setText("Book Ride");
+    }
+
+    void offerRides(){
+        rideShareButton.setText("Offer Ride");
+    }
 
     @Override
     public void onBackPressed() {
@@ -179,11 +186,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_ride_history) {
             i = new Intent(this, RideHistory.class);
         } else if (id == R.id.nav_emergency_contacts) {
-
+            i = new Intent(this, EmergencyContactsActivity.class);
         } else if (id == R.id.nav_offer_ride) {
 
         } else if (id == R.id.nav_support) {
-
+            i = new Intent(this, SupportActivity.class);
         }
         if (i != null) {
             startActivity(i);
