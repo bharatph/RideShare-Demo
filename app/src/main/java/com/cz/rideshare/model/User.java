@@ -1,6 +1,7 @@
 package com.cz.rideshare.model;
 
 import android.net.Uri;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -88,7 +89,8 @@ public class User {
     * @generated
     */
     public String getName() {
-        return this.name;
+        if(name != null && !name.isEmpty()) return this.name;
+        return name="User";
     }
     
     /**
@@ -164,7 +166,9 @@ public class User {
     * @generated
     */
     public Uri getDisplayPicture() {
-        return this.displayPicture;
+
+        if(displayPicture != null && !displayPicture.toString().isEmpty()) return this.displayPicture;
+        return displayPicture = Uri.parse("https://wordsandvideos.com/wp-content/uploads/2016/12/common.png");
     }
     
     /**

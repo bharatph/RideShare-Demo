@@ -24,14 +24,14 @@
             android:theme="@style/AppTheme.Normal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".RideHistory"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Contrast">
-        </activity>
+            android:theme="@style/AppTheme.Contrast" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -44,6 +44,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
@@ -55,7 +56,9 @@
             android:name=".FilterRide"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Contrast" />
-        <activity android:name=".RideDetailed"></activity>
+        <activity android:name=".RideDetailed" />
+        <activity android:name=".EmergencyContactsActivity" />
+        <activity android:name=".SupportActivity"></activity>
     </application>
 
 </manifest>

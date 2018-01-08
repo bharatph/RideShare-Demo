@@ -27,7 +27,7 @@
     <string name="Recheck">Re-type the same password</string>
     <string name="gender">Gender</string>
 
-    <string name="menu_book_rides">Book Rides</string>
+    <string name="menu_book_rides">Book Ride</string>
     <string name="menu_ride_history">Ride History</string>
     <string name="menu_emergency_contacts">Emergency Contacts</string>
     <string name="menu_offer_ride">Offer Ride</string>
@@ -36,14 +36,13 @@
     <string name="caption_from">From</string>
     <string name="caption_to">Where to</string>
     <string name="hint_search_location">search for a location</string>
-    <string name="button_share_ride">Share Ride</string>
     <string name="caption_date_pick">When?</string>
     <string name="text_date_pick">Pick the date and time you want to travel</string>
 
     <string name="header_profile">Profile</string>
     <string name="caption_user_email">e-mail</string>
-    <string name="caption_user_mobile">mobile</string>
-    <string name="hint_mobile">enter mobile number</string>
+    <string name="caption_user_mobile">phone</string>
+    <string name="hint_mobile">XXXXX XXXXX</string>
     <string name="button_password_change">Change Password</string>
     <string name="button_sign_up">Sign Up</string>
     <string name="button_logout">Logout</string>
@@ -59,5 +58,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="sign_out">Sign Out</string>
+    <string name="hint_phone_number">Enter Phone Number</string>
+    <string name="hint_verification_code">XXX XXX</string>
+    <string name="start_phone_auth">Start</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="resend_phone_auth">Resend</string>
+    <string name="rideshare_phone_info">Enter your phone number to proceed</string>
+    <string name="skip_login_caption">skip this step</string>
+    <string name="caption_verify_otp">Awaiting Verification</string>
+    <string name="verify_otp_brief">Waiting to automatically detect an SMS sent to your number or you can enter manually</string>
+    <string name="resend_sms">Resend SMS</string>
+    <string name="call_user">Call me</string>
 </resources>
