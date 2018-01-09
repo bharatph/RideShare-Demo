@@ -34,6 +34,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, SelectDate.OnFragmentInteractionListener {
 
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity
         options.centerCrop();
 
         TextView user_txt = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name);
-        ImageView user_image = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.userImageView);
+        CircleImageView user_image = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.userImageView);
 
         user_txt.setText(RideShareController.getInstance().user.getName());
         Glide.with(navigationView.getHeaderView(0))

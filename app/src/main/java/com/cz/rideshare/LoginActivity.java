@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mPhoneNumberField = (EditText) findViewById(R.id.field_phone_number);
+        //mPhoneNumberField = (EditText) findViewById(R.id.field_phone_number);
         //mVerificationField = (EditText) findViewById(R.id.field_verification_code);
 
         //mStartButton = findViewById(R.id.button_start_verification);
@@ -169,14 +169,18 @@ public class LoginActivity extends AppCompatActivity implements
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         //TODO FIREBASE INTEGRATION
+        //var firebase = instace
+        //firebase.verifcaition
         ArrayList<Verification> verifications = new ArrayList<Verification>();
+
         verifications.add(new Verification("Mobile Number Verified", true));
         verifications.add(new Verification("Email Verified", true));
         verifications.add(new Verification("Licence Verified", false));
         verifications.add(new Verification("208 Facebook Friends", true));
+
         if (user != null) {
             RideShareController.getInstance().user = new User(user.getUid(), user.getDisplayName(), user.getEmail(), null, Gender.MALE, null,
-                    user.getPhoneNumber(), null, null, Uri.parse("http://www.bsieng.com/wp-content/uploads/2013/11/person1.jpg"), new Date(), verifications);
+                    user.getPhoneNumber(), null, null, user.getPhotoUrl(), new Date(), verifications);
             //TODO END
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
@@ -189,11 +193,11 @@ public class LoginActivity extends AppCompatActivity implements
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_start_verification:
-                if (!validatePhoneNumber()) {
-                    return;
-                }
+                //if (!validatePhoneNumber()) {
+                 //   return;
+                //}
                 loginViewPager.setCurrentItem(1); //1 - verify page
-                startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+                //startPhoneNumberVerification(mPhoneNumberField.getText().toString());
                 break;
             case R.id.button_verify_phone:
                 String code = mVerificationField.getText().toString();
@@ -210,8 +214,17 @@ public class LoginActivity extends AppCompatActivity implements
                 Toast.makeText(this, "Calling user is not supported in this build", Toast.LENGTH_LONG).show();
                 break;
             case R.id.skip_login:
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
+                //TODO FIREBASE INTEGRATION
+                ArrayList<Verification> verifications = new ArrayList<Verification>();
+                verifications.add(new Verification("Mobile Number Verified", true));
+                verifications.add(new Verification("Email Verified", true));
+                verifications.add(new Verification("Licence Verified", false));
+                verifications.add(new Verification("208 Facebook Friends", true));
+                    RideShareController.getInstance().user = new User("234jdsfgkhsjdf2", "User", "abs@gma.com", null, Gender.MALE, null,
+                            "+91 345934593459", new Date(), null, Uri.parse("http://www.bsieng.com/wp-content/uploads/2013/11/person1.jpg"), new Date(), verifications);
+                    //TODO END
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
                 break;
         }
 
