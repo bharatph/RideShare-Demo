@@ -13,12 +13,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.util.Util;
 import com.cz.rideshare.R;
 import com.cz.rideshare.RideDetailed;
 import com.cz.rideshare.model.RideSnapshot;
+import com.wdullaer.materialdatetimepicker.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Currency;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -68,7 +72,11 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
             SimpleDateFormat sdf = new SimpleDateFormat("EE, MMM dd");
             holder.date.setText(sdf.format(rideSnapshot.getTimeStarted()));
         }
-        if (holder.price != null) holder.price.setText(String.valueOf(rideSnapshot.getPrice()));
+        if (holder.price != null) {
+            Locale uk = new Locale("en", "US");
+            Currency pound = Currency.getInstance("USD");
+            holder.price.setText(pound.getSymbol(uk) + String.valueOf(rideSnapshot.getPrice()));
+        }
 
 
         if (holder.driverImage != null)
