@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RideshareToolbar">
+        <attr name="headerText" format="string"/>
+        <attr name="headerIcon1" format="reference"/>
+        <attr name="headerIcon2" format="reference"/>
+    </declare-styleable>
+</resources>

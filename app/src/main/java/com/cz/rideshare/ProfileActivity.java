@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     void initialize(){
         logoutButton = findViewById(R.id.logoutButton);
         emailEditText = findViewById(R.id.profileUserEmailEdit);
-        phoneEditText = findViewById(R.id.profileUserEmailEdit);
+        phoneEditText = findViewById(R.id.profileUserPhoneEdit);
         profileUserImage = findViewById(R.id.profileUserImage);
         profileUserName = findViewById(R.id.profileUserName);
     }
