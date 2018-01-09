@@ -17,6 +17,7 @@ import com.cz.rideshare.R;
 import com.cz.rideshare.RideDetailed;
 import com.cz.rideshare.model.RideSnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -63,7 +64,10 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
                     .into(holder.rideImage);
         if (holder.rideType != null)
             holder.rideType.setText(rideSnapshot.getVehicle().getVehicleType().getTypeName());
-        if (holder.date != null) holder.date.setText(rideSnapshot.getTimeStarted().toString()); //TODO Format
+        if (holder.date != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("EE, MMM dd");
+            holder.date.setText(sdf.format(rideSnapshot.getTimeStarted()));
+        }
         if (holder.price != null) holder.price.setText(String.valueOf(rideSnapshot.getPrice()));
 
 
@@ -78,9 +82,9 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
             holder.driverRating.setText((int) Math.abs(rideSnapshot.getRating().getRating()) + " ratings");//FIXME
 
         if (holder.startTime != null)
-            holder.startTime.setText(rideSnapshot.getTimeStarted().toString());  //TODO Format
+            holder.startTime.setText((new SimpleDateFormat("HH:mm")).format(rideSnapshot.getTimeStarted()));
         if (holder.endTime != null)
-            holder.endTime.setText(rideSnapshot.getEnd().getTimeDelta().toString());  //TODO Format
+            holder.endTime.setText((new SimpleDateFormat("HH:mm")).format(rideSnapshot.getEnd().getTimeDelta()));
         if (holder.startAddr != null)
             holder.startAddr.setText(rideSnapshot.getStart().getLocationName());
         if (holder.endAddr != null) holder.endAddr.setText(rideSnapshot.getEnd().getLocationName());
