@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.cz.rideshare.adapters.PathListAdapter;
 import com.cz.rideshare.adapters.PermissionListAdapter;
 import com.cz.rideshare.adapters.VerificationListAdapter;
+import com.cz.rideshare.model.Node;
 import com.cz.rideshare.model.Permission;
 import com.cz.rideshare.model.RideSnapshot;
 
@@ -21,6 +23,7 @@ public class RideDetailed extends AppCompatActivity {
     Context context = this;
     RecyclerView carPermissionRecyclerView = null;
     RecyclerView verificationRecyclerView = null;
+    RecyclerView pathRecyclerView = null;
     Button bookRide = null;
 
     RideSnapshot rideSnapshot = null;
@@ -28,6 +31,7 @@ public class RideDetailed extends AppCompatActivity {
     void initialise(){
         carPermissionRecyclerView = findViewById(R.id.carPermissionRecyclerView);
         verificationRecyclerView = findViewById(R.id.detailedVerificationRecyclerView);
+        pathRecyclerView = findViewById(R.id.detailedPathRecyclerView);
         bookRide = findViewById(R.id.bookButton);
     }
 
@@ -63,5 +67,12 @@ public class RideDetailed extends AppCompatActivity {
         verificationRecyclerView.setAdapter(new VerificationListAdapter(RideShareController.getInstance().user.getVerifications()));
         verificationRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        ArrayList<Node> nodes = new ArrayList<Node>();
+        nodes.add(RideShareController.getInstance().getRideSnapshot().getStart());
+        if(RideShareController.getInstance().getRideSnapshot().getIntermediates() != null)
+            nodes.addAll(RideShareController.getInstance().getRideSnapshot().getIntermediates());
+        nodes.add(RideShareController.getInstance().getRideSnapshot().getEnd());
+        pathRecyclerView.setAdapter(new PathListAdapter(nodes));
+        pathRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 }

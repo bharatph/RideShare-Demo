@@ -37,14 +37,7 @@ class RideShareController {
 
     public void setUser(FirebaseUser fUser) {
 
-        ArrayList<Verification> verifications = new ArrayList<Verification>();
-
-        verifications.add(new Verification("Mobile Number Verified", true));
-        verifications.add(new Verification("Email Verified", true));
-        verifications.add(new Verification("Licence Verified", false));
-        verifications.add(new Verification("208 Facebook Friends", true));
-
-
+        //TODO parse from JSON from Firebase
         user = new User(fUser.getUid(), fUser.getDisplayName(), fUser.getEmail(), new Rating(45, 34), Gender.MALE, new ArrayList<RideSnapshot>(), fUser.getPhoneNumber(), new Date(), "", fUser.getPhotoUrl(), new Date(), new ArrayList<Verification>());
 
     }
@@ -53,6 +46,12 @@ class RideShareController {
         //get settings from local store
 
         //initializing with initial values, so it's never null
-        user = new User("0", "User", "", new Rating(0, 0), Gender.MALE, new ArrayList<RideSnapshot>(), "", new Date(), "", null, new Date(), new ArrayList<Verification>());
+
+        ArrayList<Verification> verifications = new ArrayList<Verification>();
+        verifications.add(new Verification("Mobile Number Verified", true));
+        verifications.add(new Verification("Email Verified", true));
+        verifications.add(new Verification("Licence Verified", false));
+        verifications.add(new Verification("208 Facebook Friends", true));
+        user = new User("0", "User", "", new Rating(0, 0), Gender.MALE, new ArrayList<RideSnapshot>(), "", new Date(), "", null, new Date(), verifications);
     }
 }
