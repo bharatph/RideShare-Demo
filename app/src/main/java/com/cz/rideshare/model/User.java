@@ -63,7 +63,8 @@ public class User {
     private Date lastOnline;
 
     private ArrayList<Verification> verifications;
-    
+
+
     
     /**
      * @generated

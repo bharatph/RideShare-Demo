@@ -61,7 +61,7 @@ public class RideHistory extends AppCompatActivity {
 
         //////////////////////////////////////////////////////////////////////////////////////
 
-        rideHistoryRecyclerView.setAdapter(new RideSnapshotListAdpater(this, rideSnapshots));
+        rideHistoryRecyclerView.setAdapter(new RideSnapshotListAdpater(this, rideSnapshots, null));
         rideHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         LinearSnapHelper sh = new LinearSnapHelper();
         sh.attachToRecyclerView(rideHistoryRecyclerView);

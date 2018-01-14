@@ -7,13 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.cz.rideshare.adapters.RideSnapshotListAdpater;
 import com.cz.rideshare.model.Gender;
 import com.cz.rideshare.model.Node;
 import com.cz.rideshare.model.Rating;
+import com.cz.rideshare.listeners.RecyclerViewItemClickListener;
 import com.cz.rideshare.model.RideSnapshot;
 import com.cz.rideshare.model.User;
 import com.cz.rideshare.model.Vehicle;
@@ -28,11 +29,11 @@ public class FilterRide extends AppCompatActivity {
     private final Context context = this;
 
     private RecyclerView recyclerView = null;
-    private TextView headerTextView = null;
+    //private TextView headerTextView = null;
 
     private void initialise(){
         recyclerView = findViewById(R.id.rideFilterRecyclerView);
-        headerTextView = findViewById(R.id.filterHeaderText);
+        //headerTextView = findViewById(R.id.filterHeaderText);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +41,21 @@ public class FilterRide extends AppCompatActivity {
         setContentView(R.layout.activity_filter_ride);
         initialise();
         //
-         headerTextView.setText("Chennai - Bengaluru");
+         //headerTextView.setText("Chennai - Bengaluru");
 
 
 
 
-        ArrayList<RideSnapshot> rideSnapshots = new ArrayList<RideSnapshot>();
+        final ArrayList<RideSnapshot> rideSnapshots = new ArrayList<RideSnapshot>();
 
         ///////////////////////////////////TODO Firebase Integration/////////////////////////////////////
 
-        User user = new User("78", "Someone", "someone@someone.com", new Rating(5, 10f),
+        User user = new User("78", "John Doe", "someone@someone.com", new Rating(5, 10f),
                 Gender.MALE,
                 null, "+91 99999 99999",
-                new Date(), "dsfs", Uri.parse("https://www.latfusa.com/media/archive/20130529130146Ben_A__.jpg"), new Date(), null);
-        RideSnapshot rideSnapshot = new RideSnapshot(20, 365f,
-                new Node("RMK College", new Date(), new LatLng(45.00, 65.9)), null,
+                new Date(), "dsfs", Uri.parse("http://hardikmanktala.com/projects/themes/signe/demo/assets/images/people/people1.jpg"), new Date(), null);
+        final RideSnapshot rideSnapshot = new RideSnapshot(20, 365f,
+                new Node("RMK College", new Date(), new LatLng(13.357659, 80.142839)), null,
                 new Vehicle("Suzuki Honda",
                         2,
                         "TN-XX XXXX",
@@ -63,13 +64,20 @@ public class FilterRide extends AppCompatActivity {
                         null),
                 null,
                 null, new Date(),
-                new Node("CZ Smart Mobility", new Date(), new LatLng(46.00f, 34.65f)), new Rating(5,10f), user);
+                new Node("CZ Smart Mobility", new Date(), new LatLng(12.899488, 80.235022)), new Rating(5,10f), user);
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new RideSnapshotListAdpater(this, rideSnapshots));
+        recyclerView.setAdapter(new RideSnapshotListAdpater(this, rideSnapshots, new RecyclerViewItemClickListener() {
+            @Override
+            public void onCLick(View v, int position) {
+                Intent i = new Intent(context, RideDetailed.class);
+                RideShareController.getInstance().setRideSnapshot(rideSnapshot);
+                startActivity(i);
+            }
+        }));
     }
 }

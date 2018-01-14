@@ -2,6 +2,7 @@ package com.cz.rideshare;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -38,7 +39,7 @@ public class RideshareToolbar extends RelativeLayout {
         imgBtton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Activity host = (Activity)v.getContext();
+                AppCompatActivity host = (AppCompatActivity)v.getContext();
                 host.finish();
             }
         });

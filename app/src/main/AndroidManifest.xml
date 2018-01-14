@@ -8,6 +8,7 @@
          locatverificationsions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -58,7 +59,8 @@
             android:theme="@style/AppTheme.Contrast" />
         <activity android:name=".RideDetailed" />
         <activity android:name=".EmergencyContactsActivity" />
-        <activity android:name=".SupportActivity"></activity>
+        <activity android:name=".SupportActivity" />
+        <activity android:name=".RideActivity"></activity>
     </application>
 
 </manifest>

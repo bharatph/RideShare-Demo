@@ -1,10 +1,7 @@
 package com.cz.rideshare.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.transition.CircularPropagation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +10,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.util.Util;
 import com.cz.rideshare.R;
-import com.cz.rideshare.RideDetailed;
+import com.cz.rideshare.listeners.RecyclerViewItemClickListener;
 import com.cz.rideshare.model.RideSnapshot;
-import com.wdullaer.materialdatetimepicker.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,10 +30,12 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
 
     private ArrayList<RideSnapshot> rideSnapshots = null;
     private Context context = null;
+    private RecyclerViewItemClickListener clickListener = null;
 
-    public RideSnapshotListAdpater(Context context, ArrayList<RideSnapshot> rideSnapshots) {
+    public RideSnapshotListAdpater(Context context, ArrayList<RideSnapshot> rideSnapshots, RecyclerViewItemClickListener clickListener) {
         this.context = context;
         this.rideSnapshots = rideSnapshots;
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -53,21 +50,13 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.centerCrop();
 
-        holder.rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, RideDetailed.class);
-                context.startActivity(i);
-            }
-        });
-
         if (holder.rideImage != null)
             Glide.with(holder.rootView)
                     .load(rideSnapshot.getVehicle().getVehicleType().getTypeImage())
                     .apply(requestOptions)
                     .into(holder.rideImage);
         if (holder.rideType != null)
-            holder.rideType.setText(rideSnapshot.getVehicle().getVehicleType().getTypeName());
+            holder.rideType.setText(rideSnapshot.getVehicle().getVehicleName());
         if (holder.date != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("EE, MMM dd");
             holder.date.setText(sdf.format(rideSnapshot.getTimeStarted()));
@@ -123,6 +112,13 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
         public RideSnapshotViewHolder(View itemView) {
             super(itemView);
             this.rootView = itemView;
+            rootView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (clickListener != null)
+                        clickListener.onCLick(v, getAdapterPosition());
+                }
+            });
             rideImage = itemView.findViewById(R.id.snapshotRideImage);
             rideType = itemView.findViewById(R.id.snapshotRideType);
             date = itemView.findViewById(R.id.snapshotDate);

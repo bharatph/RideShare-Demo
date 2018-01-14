@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,6 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class SelectDate extends DialogFragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private final DialogFragment dialogFragment = this;
     private OnFragmentInteractionListener mListener;
@@ -54,10 +51,18 @@ public class SelectDate extends DialogFragment {
         // Inflate the layout for this fragment
         View fragmentRoot =  inflater.inflate(R.layout.fragment_select_time, container, false);
         View btn = fragmentRoot.findViewById(R.id.dateSubmitButton);
+        View exitBtn = fragmentRoot.findViewById(R.id.selectDateExit);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(dialogFragment.getContext(), FilterRide.class));
+            }
+        });
+
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
             }
         });
         return fragmentRoot;
