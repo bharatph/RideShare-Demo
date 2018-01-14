@@ -21,6 +21,7 @@
         >
 
         <EditText
+            android:id="@+id/loginCountryCode"
             style="@style/CustomEditText"
             android:text="+91"
             android:textSize="@dimen/xxlarge"
@@ -32,20 +33,20 @@
             android:layout_height="wrap_content"
             android:inputType="phone" />
         <EditText
+            android:id="@+id/field_phone_number"
             android:textSize="@dimen/xxlarge"
             style="@style/CustomEditText"
             android:theme="@style/CustomEditText"
             android:layout_weight="0.6"
-            android:id="@+id/field_phone_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_mobile"
             android:inputType="phone" />
 
         <ImageButton
+            android:id="@+id/button_start_verification"
             android:tint="@android:color/white"
             app:srcCompat="@drawable/chevron_right"
-            android:id="@+id/button_start_verification"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"

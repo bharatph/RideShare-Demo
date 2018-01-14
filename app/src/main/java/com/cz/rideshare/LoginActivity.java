@@ -1,8 +1,8 @@
 package com.cz.rideshare;
 
 
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,39 +45,36 @@ import java.util.concurrent.TimeUnit;
 public class LoginActivity extends AppCompatActivity implements
         View.OnClickListener {
 
-    EditText mPhoneNumberField, mVerificationField;
-    ImageButton mStartButton, mVerifyButton, mResendButton;
+    static EditText mPhoneNumberField, mVerificationField;
+    static ImageButton mStartButton, mVerifyButton;
+    static LinearLayout mResendButton;
     Button skipLoginBtn = null;
     NonSwipeableViewPager loginViewPager = null;
+
 
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     String mVerificationId;
-    private final LoginActivity context = this;
+    static LoginActivity context;
 
     private static final String TAG = "PhoneAuthActivity";
+    static String phoneNumber = "";
+    static String verifyCode = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        context = this;
 
-        //mPhoneNumberField = (EditText) findViewById(R.id.field_phone_number);
-        //mVerificationField = (EditText) findViewById(R.id.field_verification_code);
-
-        //mStartButton = findViewById(R.id.button_start_verification);
-        //mVerifyButton = (Button) findViewById(R.id.button_verify_phone);
-        //mResendButton = (Button) findViewById(R.id.button_resend);
-        skipLoginBtn = findViewById(R.id.skip_login);
 
         loginViewPager = findViewById(R.id.loginViewPager);
-
         loginViewPager.setAdapter(new AuthPagerAdapter(getSupportFragmentManager()));
 
-        //mStartButton.setOnClickListener(this);
-        //mVerifyButton.setOnClickListener(this);
-        //mResendButton.setOnClickListener(this);
+        skipLoginBtn = findViewById(R.id.skip_login);
+
+
         skipLoginBtn.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -155,14 +152,6 @@ public class LoginActivity extends AppCompatActivity implements
                 token);             // ForceResendingToken from callbacks
     }
 
-    private boolean validatePhoneNumber() {
-        String phoneNumber = mPhoneNumberField.getText().toString();
-        if (TextUtils.isEmpty(phoneNumber)) {
-            mPhoneNumberField.setError("Invalid phone number.");
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public void onStart() {
@@ -194,13 +183,13 @@ public class LoginActivity extends AppCompatActivity implements
         switch (view.getId()) {
             case R.id.button_start_verification:
                 //if (!validatePhoneNumber()) {
-                 //   return;
+                //   return;
                 //}
                 loginViewPager.setCurrentItem(1); //1 - verify page
-                //startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+                startPhoneNumberVerification(phoneNumber);
                 break;
             case R.id.button_verify_phone:
-                String code = mVerificationField.getText().toString();
+                String code = verifyCode;
                 if (TextUtils.isEmpty(code)) {
                     mVerificationField.setError("Cannot be empty.");
                     return;
@@ -208,50 +197,49 @@ public class LoginActivity extends AppCompatActivity implements
                 verifyPhoneNumberWithCode(mVerificationId, code);
                 break;
             case R.id.button_resend:
-                resendVerificationCode(mPhoneNumberField.getText().toString(), mResendToken);
+                resendVerificationCode(phoneNumber, mResendToken);
                 break;
             case R.id.button_call_user:
                 Toast.makeText(this, "Calling user is not supported in this build", Toast.LENGTH_LONG).show();
                 break;
             case R.id.skip_login:
-                //TODO FIREBASE INTEGRATION
-                ArrayList<Verification> verifications = new ArrayList<Verification>();
-                verifications.add(new Verification("Mobile Number Verified", true));
-                verifications.add(new Verification("Email Verified", true));
-                verifications.add(new Verification("Licence Verified", false));
-                verifications.add(new Verification("208 Facebook Friends", true));
-                    RideShareController.getInstance().user = new User("234jdsfgkhsjdf2", "User", "abs@gma.com", null, Gender.MALE, null,
-                            "+91 345934593459", new Date(), null, Uri.parse("http://www.bsieng.com/wp-content/uploads/2013/11/person1.jpg"), new Date(), verifications);
-                    //TODO END
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
                 break;
         }
-
     }
 
 
     public static class AuthFragment extends Fragment {
 
         private View.OnClickListener listener = null;
-        ImageButton loginButton = null;
+        public ImageButton loginButton = null;
+        public EditText loginCountryCode = null;
+        public EditText loginPhoneNumber = null;
+
         public AuthFragment() {
         }
 
-        static Fragment getInstance(){
+        static Fragment getInstance() {
             return new AuthFragment();
-        }
-
-        public void setListener(View.OnClickListener listener){
-            this.listener = listener;
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.login_page_phone, container, false);
+            loginCountryCode = rootView.findViewById(R.id.loginCountryCode);
+            loginPhoneNumber = rootView.findViewById(R.id.field_phone_number);
             loginButton = rootView.findViewById(R.id.button_start_verification);
-            loginButton.setOnClickListener(listener);
+            LoginActivity.mPhoneNumberField = loginPhoneNumber;
+            loginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    phoneNumber = loginCountryCode.getText().toString() + " " + loginPhoneNumber.getText().toString(); //conforming to E.164 standard
+                    Log.i("AuthFragment", phoneNumber);
+                    context.onClick(v);
+                }
+            });
             return rootView;
         }
 
@@ -260,23 +248,26 @@ public class LoginActivity extends AppCompatActivity implements
 
     public static class VerifyFragment extends Fragment {
 
-        private View.OnClickListener listener = null;
         ImageButton verifyBtn = null;
         LinearLayout resendBtn = null;
         LinearLayout callBtn = null;
+        EditText verificationField = null;
 
-
-        public VerifyFragment(){
+        public VerifyFragment() {
 
         }
 
-        static Fragment getInstance(){
+        static Fragment getInstance() {
             return new VerifyFragment();
         }
 
-        public void setListener(View.OnClickListener listener){
-            this.listener = listener;
-        }
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginActivity.verifyCode = verificationField.getText().toString();
+                context.onClick(v);
+            }
+        };
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -285,13 +276,12 @@ public class LoginActivity extends AppCompatActivity implements
             verifyBtn = rootView.findViewById(R.id.button_verify_phone);
             resendBtn = rootView.findViewById(R.id.button_resend);
             callBtn = rootView.findViewById(R.id.button_call_user);
+            verificationField = rootView.findViewById(R.id.field_verification_code);
+            LoginActivity.mVerificationField = verificationField;
             verifyBtn.setOnClickListener(listener);
             resendBtn.setOnClickListener(listener);
             callBtn.setOnClickListener(listener);
             return rootView;
-            //TextView textView = new TextView(getActivity());
-            //textView.setText(R.string.hello_blank_fragment);
-            //return textView;
         }
 
     }
@@ -305,15 +295,11 @@ public class LoginActivity extends AppCompatActivity implements
 
         @Override
         public Fragment getItem(int position) {
-            if(position == 0){
-                AuthFragment af = (AuthFragment) AuthFragment.getInstance();
-                af.setListener(context);
-                return af;
-            } else {
-                VerifyFragment vf = (VerifyFragment) VerifyFragment.getInstance();
-                vf.setListener(context);
-                return vf;
-            }
+            if (position == 0)
+                return AuthFragment.getInstance();
+            else
+                return VerifyFragment.getInstance();
+
         }
 
         @Override
