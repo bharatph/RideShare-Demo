@@ -1,5 +1,7 @@
 package com.cz.rideshare;
 
+import android.net.Uri;
+
 import com.cz.rideshare.model.Gender;
 import com.cz.rideshare.model.Rating;
 import com.cz.rideshare.model.RideSnapshot;
@@ -37,7 +39,7 @@ class RideShareController {
 
     public void setUser(FirebaseUser fUser) {
 
-        //TODO parse from JSON from Firebase
+        //TODO parse JSON from Firebase
         user = new User(fUser.getUid(), fUser.getDisplayName(), fUser.getEmail(), new Rating(45, 34), Gender.MALE, new ArrayList<RideSnapshot>(), fUser.getPhoneNumber(), new Date(), "", fUser.getPhotoUrl(), new Date(), new ArrayList<Verification>());
 
     }

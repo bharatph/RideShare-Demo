@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity implements
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    String mVerificationId;
     static LoginActivity context;
 
     private static final String TAG = "PhoneAuthActivity";
@@ -100,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements
             public void onCodeSent(String verificationId,
                                    PhoneAuthProvider.ForceResendingToken token) {
                 Log.d(TAG, "onCodeSent:" + verificationId);
-                mVerificationId = verificationId;
+                verifyCode = verificationId;
                 mResendToken = token;
             }
         };
@@ -194,7 +193,7 @@ public class LoginActivity extends AppCompatActivity implements
                     mVerificationField.setError("Cannot be empty.");
                     return;
                 }
-                verifyPhoneNumberWithCode(mVerificationId, code);
+                verifyPhoneNumberWithCode(verifyCode, code);
                 break;
             case R.id.button_resend:
                 resendVerificationCode(phoneNumber, mResendToken);

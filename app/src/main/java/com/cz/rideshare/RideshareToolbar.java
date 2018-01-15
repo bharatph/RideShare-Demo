@@ -2,6 +2,7 @@ package com.cz.rideshare;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
@@ -30,7 +31,16 @@ public class RideshareToolbar extends RelativeLayout {
         super(context, attrSet, style);
         init();
     }
+    private AppCompatActivity scanForActivity(Context cont) {
+        if (cont == null)
+            return null;
+        else if (cont instanceof Activity)
+            return (AppCompatActivity) cont;
+        else if (cont instanceof ContextWrapper)
+            return scanForActivity(((ContextWrapper)cont).getBaseContext());
 
+        return null;
+    }
     public void init(){
         inflate(getContext(), R.layout.rideshare_toolbar, this);
         ImageButton imgBtton = findViewById(R.id.headerBackButton);
@@ -39,7 +49,7 @@ public class RideshareToolbar extends RelativeLayout {
         imgBtton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppCompatActivity host = (AppCompatActivity)v.getContext();
+                AppCompatActivity host = scanForActivity(v.getContext());
                 host.finish();
             }
         });

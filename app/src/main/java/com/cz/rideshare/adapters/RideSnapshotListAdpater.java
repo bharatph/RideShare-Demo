@@ -1,6 +1,7 @@
 package com.cz.rideshare.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +67,6 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
             Currency pound = Currency.getInstance("USD");
             holder.price.setText(pound.getSymbol(uk) + String.valueOf(rideSnapshot.getPrice()));
         }
-
 
         if (holder.driverImage != null)
             Glide.with(holder.rootView)

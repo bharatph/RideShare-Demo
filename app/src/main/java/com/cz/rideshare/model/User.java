@@ -3,6 +3,8 @@ package com.cz.rideshare.model;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import com.bumptech.glide.load.engine.Resource;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -169,7 +171,7 @@ public class User {
     public Uri getDisplayPicture() {
 
         if(displayPicture != null && !displayPicture.toString().isEmpty()) return this.displayPicture;
-        return displayPicture = Uri.parse("https://wordsandvideos.com/wp-content/uploads/2016/12/common.png");
+        return displayPicture = Uri.parse("android.resource://com.cz.rideshare/drawable/user_null");
     }
     
     /**

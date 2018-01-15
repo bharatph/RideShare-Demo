@@ -28,6 +28,7 @@
         <TextView
             android:id="@+id/snapshotDate"
             style="@style/AppTheme.HeaderTextView"
+            android:textSize="@dimen/xxlarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
@@ -35,6 +36,7 @@
         <TextView
             android:id="@+id/snapshotRideType"
             style="@style/AppTheme.HeaderTextView"
+            android:textSize="@dimen/large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"

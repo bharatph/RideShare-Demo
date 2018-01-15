@@ -6,7 +6,7 @@
     android:background="@drawable/round_button_white"
     android:elevation="@dimen/cardview_default_elevation"
     android:orientation="vertical"
-    android:padding="@dimen/large"
+    android:padding="@dimen/xxlarge"
     android:theme="@style/AppTheme.Contrast"
     tools:showIn="@layout/activity_ride_detailed">
 

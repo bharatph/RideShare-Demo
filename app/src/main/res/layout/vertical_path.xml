@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:theme="@style/AppTheme.Contrast"
-    android:padding="@dimen/activity_horizontal_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:showIn="@layout/ride_summary"
     android:orientation="horizontal"
+    android:padding="@dimen/tiny"
     xmlns:tools="http://schemas.android.com/tools">
     <ImageView
         android:id="@+id/nodeImage"

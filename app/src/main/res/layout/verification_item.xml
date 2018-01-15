@@ -2,17 +2,20 @@
 <LinearLayout
     android:theme="@style/AppTheme.Contrast"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="@dimen/tiniest"
+    android:paddingRight="@dimen/tiniest"
+    android:paddingBottom="@dimen/tiniest"
+    android:paddingTop="@dimen/tiniest"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <ImageView
         android:id="@+id/detailedVerificationImage"
         android:layout_weight="0.1"
-        android:layout_width="32dp"
+        android:layout_width="0dp"
         android:layout_height="32dp" />
     <TextView
         android:id="@+id/detailedVerifcationName"
+        android:layout_gravity="center_vertical"
         android:layout_marginLeft="@dimen/small"
         android:layout_marginStart="@dimen/small"
         android:layout_weight="0.9"
