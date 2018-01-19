@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.cz.rideshare.adapter.PathListAdapter;
 import com.cz.rideshare.adapter.PermissionListAdapter;
@@ -18,13 +20,14 @@ import com.cz.rideshare.model.RideSnapshot;
 
 import java.util.ArrayList;
 
-public class RideDetailed extends AppCompatActivity {
+public class RideDetailed extends AppCompatActivity implements View.OnClickListener {
 
     Context context = this;
     RecyclerView carPermissionRecyclerView = null;
     RecyclerView verificationRecyclerView = null;
     RecyclerView pathRecyclerView = null;
     Button bookRide = null;
+    ImageButton shareButton = null;
 
     RideSnapshot rideSnapshot = null;
 
@@ -32,7 +35,8 @@ public class RideDetailed extends AppCompatActivity {
         carPermissionRecyclerView = findViewById(R.id.carPermissionRecyclerView);
         verificationRecyclerView = findViewById(R.id.detailedVerificationRecyclerView);
         pathRecyclerView = findViewById(R.id.detailedPathRecyclerView);
-        bookRide = findViewById(R.id.bookButton);
+        bookRide = findViewById(R.id.detailedBookButton);
+        shareButton = findViewById(R.id.detailedShareButton);
     }
 
     @Override
@@ -42,14 +46,9 @@ public class RideDetailed extends AppCompatActivity {
         rideSnapshot = RideShareController.getInstance().getRideSnapshot();
         initialise();
 
-        bookRide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, RideActivity.class);
-                RideShareController.getInstance().setRideSnapshot(rideSnapshot);
-                startActivity(i);
-            }
-        });
+        bookRide.setOnClickListener(this);
+        shareButton.setOnClickListener(this);
+
         ArrayList<Permission> permissions = new ArrayList<Permission>();
 
         ///////////////////////////////////////TODO FIREBASE INTEGRATION/////////////////////////////////
@@ -74,5 +73,19 @@ public class RideDetailed extends AppCompatActivity {
         nodes.add(RideShareController.getInstance().getRideSnapshot().getEnd());
         pathRecyclerView.setAdapter(new PathListAdapter(nodes));
         pathRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.detailedBookButton:
+                Intent i = new Intent(context, RideActivity.class);
+                RideShareController.getInstance().setRideSnapshot(rideSnapshot);
+                startActivity(i);
+                break;
+            case R.id.detailedShareButton:
+                Toast.makeText(this, "Sharing is not supported as of this build", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

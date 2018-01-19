@@ -21,8 +21,25 @@
                 android:orientation="vertical"
                 app:layout_collapseMode="pin">
                 <com.cz.rideshare.view.RideshareToolbar
+                    android:id="@+id/rideFilterToolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp" />
+                    android:layout_height="80dp" >
+                    <LinearLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            app:srcCompat="@drawable/alarm_off"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <ImageButton
+                            app:srcCompat="@drawable/filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </com.cz.rideshare.view.RideshareToolbar>
 
                 <TextView
                     android:id="@+id/averageTimeDuration"

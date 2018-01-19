@@ -11,9 +11,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <com.cz.rideshare.view.RideshareToolbar
+            app:headerText="@string/ride_detailed_header"
             android:theme="@style/AppTheme.Contrast"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"/>
+            android:layout_width="match_parent">
+
+            <ImageButton
+                android:id="@+id/detailedShareButton"
+                app:srcCompat="@drawable/share"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.cz.rideshare.view.RideshareToolbar>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,12 +52,11 @@
                 layout="@layout/ride_owner_info"/>
         </LinearLayout>
         <Button
-            android:text="Book"
-            android:visibility="gone"
+            android:text="@string/menu_book_rides"
             android:layout_marginBottom="@dimen/medium"
             android:layout_marginLeft="@dimen/user_profile_picture"
             android:layout_marginRight="@dimen/user_profile_picture"
-            android:id="@+id/bookButton"
+            android:id="@+id/detailedBookButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

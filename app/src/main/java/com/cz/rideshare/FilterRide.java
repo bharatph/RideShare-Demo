@@ -18,6 +18,7 @@ import com.cz.rideshare.model.RideSnapshot;
 import com.cz.rideshare.model.User;
 import com.cz.rideshare.model.Vehicle;
 import com.cz.rideshare.model.VehicleType;
+import com.cz.rideshare.view.RideshareToolbar;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -28,24 +29,21 @@ public class FilterRide extends AppCompatActivity {
     private final Context context = this;
 
     private RecyclerView recyclerView = null;
+    private RideshareToolbar rideshareToolbar = null;
     //private TextView headerTextView = null;
 
     private void initialise(){
         recyclerView = findViewById(R.id.rideFilterRecyclerView);
-        //headerTextView = findViewById(R.id.filterHeaderText);
+        rideshareToolbar = findViewById(R.id.rideFilterToolbar);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_ride);
         initialise();
-        //
-         //headerTextView.setText("Chennai - Bengaluru");
 
 
-
-
-        final ArrayList<RideSnapshot> rideSnapshots = new ArrayList<RideSnapshot>();
+        final ArrayList<RideSnapshot> rideSnapshots = new ArrayList<>();
 
         ///////////////////////////////////TODO Firebase Integration/////////////////////////////////////
 
@@ -72,6 +70,9 @@ public class FilterRide extends AppCompatActivity {
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);
 
+        ////////////////////////////////////TODO END////////////////////////////////////////////////////////////////
+
+        rideshareToolbar.setHeaderText(rideSnapshot.getStart().getLocationName() + " - " + rideSnapshot.getEnd().getLocationName());
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new RideSnapshotListAdpater(this, rideSnapshots, new RecyclerViewItemClickListener() {
             @Override

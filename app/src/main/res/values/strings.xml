@@ -69,8 +69,11 @@
     <string name="resend_sms">Resend SMS</string>
     <string name="call_user">Call me</string>
 
+    <string name="ride_detailed_header">Ride Detailed</string>
+
     <string name="ride_summary_travelled">Distance Travelled</string>
     <string name="ride_summary_duration">Duration</string>
 
+    <string name="app_support_url">http://czsm.co.in/</string>
 
 </resources>
