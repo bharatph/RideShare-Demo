@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 
-import com.cz.rideshare.adapters.RideSnapshotListAdpater;
+import com.cz.rideshare.adapter.RideSnapshotListAdpater;
 import com.cz.rideshare.model.Gender;
 import com.cz.rideshare.model.Node;
 import com.cz.rideshare.model.Rating;
@@ -15,10 +15,8 @@ import com.cz.rideshare.model.RideSnapshot;
 import com.cz.rideshare.model.User;
 import com.cz.rideshare.model.Vehicle;
 import com.cz.rideshare.model.VehicleType;
-import com.cz.rideshare.model.Verification;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.nio.channels.OverlappingFileLockException;
 import java.util.ArrayList;
 import java.util.Date;
 

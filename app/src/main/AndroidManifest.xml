@@ -60,7 +60,8 @@
         <activity android:name=".RideDetailed" />
         <activity android:name=".EmergencyContactsActivity" />
         <activity android:name=".SupportActivity" />
-        <activity android:name=".RideActivity"></activity>
+        <activity android:name=".RideActivity" />
+        <activity android:name=".OfferRideActivity"></activity>
     </application>
 
 </manifest>

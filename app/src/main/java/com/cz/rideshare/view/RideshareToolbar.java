@@ -1,4 +1,4 @@
-package com.cz.rideshare;
+package com.cz.rideshare.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.cz.rideshare.R;
 
 import org.w3c.dom.Text;
 
@@ -38,7 +40,6 @@ public class RideshareToolbar extends RelativeLayout {
             return (AppCompatActivity) cont;
         else if (cont instanceof ContextWrapper)
             return scanForActivity(((ContextWrapper)cont).getBaseContext());
-
         return null;
     }
     public void init(){

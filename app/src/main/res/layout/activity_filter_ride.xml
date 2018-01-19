@@ -1,41 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cz.rideshare.FilterRide">
-
-    <com.cz.rideshare.RideshareToolbar
-        android:id="@+id/include"
+    android:fitsSystemWindows="true"
+    tools:context=".FilterRide">
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="122dp"
+        android:background="@null"
+        android:fitsSystemWindows="true">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="122dp"
+                android:orientation="vertical"
+                app:layout_collapseMode="pin">
+                <com.cz.rideshare.view.RideshareToolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
 
-    <TextView
-        android:id="@+id/averageTimeDuration"
-        android:paddingLeft="@dimen/large"
-        android:paddingRight="@dimen/large"
-        android:paddingTop="@dimen/small"
-        android:paddingBottom="@dimen/small"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Average Duration 07h 00mins"
-        android:textColor="@android:color/darker_gray"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rideFilterRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/averageTimeDuration" />
-</android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/averageTimeDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingBottom="@dimen/small"
+                    android:paddingLeft="@dimen/large"
+                    android:paddingRight="@dimen/large"
+                    android:text="Average Duration 07h 00mins"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+    <include
+        layout="@layout/content_ride_filter"/>
+</android.support.design.widget.CoordinatorLayout>

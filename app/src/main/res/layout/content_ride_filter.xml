@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".RideHistory"
-    tools:showIn="@layout/activity_ride_history">
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_filter_ride">
+
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rideHistoryRecyclerView"
+        android:id="@+id/rideFilterRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
 </android.support.v4.widget.NestedScrollView>

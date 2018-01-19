@@ -156,20 +156,8 @@ public class LoginActivity extends AppCompatActivity implements
     public void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
-        //TODO FIREBASE INTEGRATION
-        //var firebase = instace
-        //firebase.verifcaition
-        ArrayList<Verification> verifications = new ArrayList<Verification>();
-
-        verifications.add(new Verification("Mobile Number Verified", true));
-        verifications.add(new Verification("Email Verified", true));
-        verifications.add(new Verification("Licence Verified", false));
-        verifications.add(new Verification("208 Facebook Friends", true));
-
         if (user != null) {
-            RideShareController.getInstance().user = new User(user.getUid(), user.getDisplayName(), user.getEmail(), null, Gender.MALE, null,
-                    user.getPhoneNumber(), null, null, user.getPhotoUrl(), new Date(), verifications);
-            //TODO END
+            RideShareController.getInstance().setUser(user);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

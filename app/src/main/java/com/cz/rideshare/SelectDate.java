@@ -22,9 +22,8 @@ import android.view.ViewGroup;
  */
 public class SelectDate extends DialogFragment {
 
-    private final DialogFragment dialogFragment = this;
     private OnFragmentInteractionListener mListener;
-
+    private Intent destination = null;
     public SelectDate() {
         // Required empty public constructor
     }
@@ -42,6 +41,9 @@ public class SelectDate extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            if( getArguments().getString("travel_type").equals(getResources().getString(R.string.menu_book_rides) )){
+                destination = new Intent(getContext(), FilterRide.class);
+            } else destination = new Intent(getContext(), OfferRideActivity.class);
         }
     }
 
@@ -55,7 +57,7 @@ public class SelectDate extends DialogFragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(dialogFragment.getContext(), FilterRide.class));
+                startActivity(destination);
             }
         });
 

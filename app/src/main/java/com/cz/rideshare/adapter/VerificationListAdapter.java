@@ -1,4 +1,4 @@
-package com.cz.rideshare.adapters;
+package com.cz.rideshare.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cz.rideshare.R;
-import com.cz.rideshare.model.Permission;
 import com.cz.rideshare.model.Verification;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
 
 import java.util.ArrayList;
 

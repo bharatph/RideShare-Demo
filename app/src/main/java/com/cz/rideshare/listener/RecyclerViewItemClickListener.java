@@ -1,4 +1,4 @@
-package com.cz.rideshare.listeners;
+package com.cz.rideshare.listener;
 
 import android.view.View;
 

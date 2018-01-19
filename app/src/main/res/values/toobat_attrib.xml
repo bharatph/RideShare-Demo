@@ -4,5 +4,6 @@
         <attr name="headerText" format="string"/>
         <attr name="headerIcon1" format="reference"/>
         <attr name="headerIcon2" format="reference"/>
+        <attr name="headerIcon3" format="reference"/>
     </declare-styleable>
 </resources>

@@ -9,9 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import com.cz.rideshare.adapters.PathListAdapter;
-import com.cz.rideshare.adapters.PermissionListAdapter;
-import com.cz.rideshare.adapters.VerificationListAdapter;
+import com.cz.rideshare.adapter.PathListAdapter;
+import com.cz.rideshare.adapter.PermissionListAdapter;
+import com.cz.rideshare.adapter.VerificationListAdapter;
 import com.cz.rideshare.model.Node;
 import com.cz.rideshare.model.Permission;
 import com.cz.rideshare.model.RideSnapshot;

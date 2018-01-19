@@ -8,13 +8,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
-import com.cz.rideshare.adapters.RideSnapshotListAdpater;
+import com.cz.rideshare.adapter.RideSnapshotListAdpater;
 import com.cz.rideshare.model.Gender;
 import com.cz.rideshare.model.Node;
 import com.cz.rideshare.model.Rating;
-import com.cz.rideshare.listeners.RecyclerViewItemClickListener;
+import com.cz.rideshare.listener.RecyclerViewItemClickListener;
 import com.cz.rideshare.model.RideSnapshot;
 import com.cz.rideshare.model.User;
 import com.cz.rideshare.model.Vehicle;
@@ -65,6 +64,9 @@ public class FilterRide extends AppCompatActivity {
                 null,
                 null, new Date(),
                 new Node("CZ Smart Mobility", new Date(), new LatLng(12.899488, 80.235022)), new Rating(5,10f), user);
+        rideSnapshots.add(rideSnapshot);
+        rideSnapshots.add(rideSnapshot);
+        rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);

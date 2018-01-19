@@ -111,7 +111,14 @@ public class MainActivity extends AppCompatActivity
         rideShareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle b = new Bundle();
+                if(rideShareButton.getText() == getResources().getString(R.string.menu_book_rides)) {
+                    b.putString("travel_type", getResources().getString(R.string.menu_book_rides));
+                } else {
+                    b.putString("travel_type", getResources().getString(R.string.menu_offer_ride));
+                }
                 SelectDate sd = SelectDate.newInstance();
+                sd.setArguments(b);
                 sd.show(getSupportFragmentManager(), "fragment_select_date");
             }
         });
@@ -185,13 +192,13 @@ public class MainActivity extends AppCompatActivity
 
         Intent i = null;
         if (id == R.id.nav_book_rides) {
-            // Handle the camera action
+            rideShareButton.setText(getResources().getString(R.string.menu_book_rides));
         } else if (id == R.id.nav_ride_history) {
             i = new Intent(this, RideHistory.class);
         } else if (id == R.id.nav_emergency_contacts) {
             i = new Intent(this, EmergencyContactsActivity.class);
         } else if (id == R.id.nav_offer_ride) {
-
+            rideShareButton.setText(getResources().getString(R.string.menu_offer_ride));
         } else if (id == R.id.nav_support) {
             i = new Intent(this, SupportActivity.class);
         }

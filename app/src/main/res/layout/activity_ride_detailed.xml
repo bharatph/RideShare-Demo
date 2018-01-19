@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <com.cz.rideshare.RideshareToolbar
+        <com.cz.rideshare.view.RideshareToolbar
             android:theme="@style/AppTheme.Contrast"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"/>
@@ -42,6 +42,7 @@
         </LinearLayout>
         <Button
             android:text="Book"
+            android:visibility="gone"
             android:layout_marginBottom="@dimen/medium"
             android:layout_marginLeft="@dimen/user_profile_picture"
             android:layout_marginRight="@dimen/user_profile_picture"
