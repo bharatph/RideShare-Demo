@@ -49,6 +49,7 @@ class RideShareController {
 
         //initializing with initial values, so it's never null
 
+
         ArrayList<Verification> verifications = new ArrayList<Verification>();
 
         verifications.add(new Verification("Mobile Number Verified", true));
