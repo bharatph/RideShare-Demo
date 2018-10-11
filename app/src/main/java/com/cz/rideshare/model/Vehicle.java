@@ -39,7 +39,9 @@ public class Vehicle {
     private String registrationNumber;
     
     
-    
+    public Vehicle(){
+
+    }
     /**
      * @generated
      */

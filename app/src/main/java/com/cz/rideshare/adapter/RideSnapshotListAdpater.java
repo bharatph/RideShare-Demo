@@ -50,6 +50,9 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.centerCrop();
 
+        if(rideSnapshot == null)return;
+        if(rideSnapshot.getVehicle() == null)return;
+
         if (holder.rideImage != null)
             Glide.with(holder.rootView)
                     .load(rideSnapshot.getVehicle().getVehicleType().getTypeImage())

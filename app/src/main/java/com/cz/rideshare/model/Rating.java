@@ -19,7 +19,9 @@ public class Rating {
     private int usersRated;
     
     
-    
+    public Rating(){
+
+    }
     /**
      * @generated
      */

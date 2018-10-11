@@ -10,8 +10,11 @@ public class Verification {
     private boolean isVerified = false;
 
 
+    public Verification() {
 
-    public Verification(String verificationName, boolean isVerified){
+    }
+
+    public Verification(String verificationName, boolean isVerified) {
         this.verificationName = verificationName;
         this.isVerified = isVerified;
     }
@@ -20,6 +23,7 @@ public class Verification {
     public String getVerificationName() {
         return verificationName;
     }
+
     public boolean getIsVerified() {
         return isVerified;
     }

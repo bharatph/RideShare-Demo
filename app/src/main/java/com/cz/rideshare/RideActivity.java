@@ -29,8 +29,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.firestore.GeoPoint;
 
 import java.util.ArrayList;
 
@@ -65,6 +67,10 @@ public class RideActivity extends AppCompatActivity implements OnMapReadyCallbac
         driverImage = findViewById(R.id.snapshotDriverImage);
         driverName = findViewById(R.id.snapshotDriverName);
         driverRating = findViewById(R.id.snapshotDriverRating);
+    }
+
+    LatLng getLatLng(GeoPoint geoPoint){
+        return new LatLng(geoPoint.getLatitude(), geoPoint.getLongitude());
     }
 
     @Override
@@ -115,8 +121,8 @@ public class RideActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         };
         rideMap.clear();
-        rideMap.addMarker(new MarkerOptions().position(rideSnapshot.getStart().getLocation()).title(rideSnapshot.getStart().getLocationName()));
-        rideMap.addMarker(new MarkerOptions().position(rideSnapshot.getEnd().getLocation()).title(rideSnapshot.getEnd().getLocationName()));
+        rideMap.addMarker(new MarkerOptions().position(getLatLng(rideSnapshot.getStart().getLocation())).title(rideSnapshot.getStart().getLocationName()));
+        rideMap.addMarker(new MarkerOptions().position(getLatLng(rideSnapshot.getEnd().getLocation())).title(rideSnapshot.getEnd().getLocationName()));
 
         Routing routing = new Routing.Builder()
                 .travelMode(Routing.TravelMode.DRIVING)
@@ -133,12 +139,11 @@ public class RideActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     @Override
                     public void onRoutingSuccess(ArrayList<Route> arrayList, int i) {
-                        rideMap.moveCamera(CameraUpdateFactory.newLatLngZoom(rideSnapshot.getStart().getLocation(), 17.0f));
-
+                        rideMap.moveCamera(CameraUpdateFactory.newLatLngZoom(getLatLng(rideSnapshot.getStart().getLocation()), 17.0f));
                         rideMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList.get(0).getLatLgnBounds().getCenter()));
                         LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                        builder.include(rideSnapshot.getEnd().getLocation());
-                        builder.include(rideSnapshot.getStart().getLocation());
+                        builder.include(getLatLng(rideSnapshot.getEnd().getLocation()));
+                        builder.include(getLatLng(rideSnapshot.getStart().getLocation()));
                         LatLngBounds bounds = builder.build();
                         rideMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50));
                         rideMap.addPolyline(arrayList.get(0).getPolyOptions().color(getResources().getColor(R.color.colorRideshare)));
@@ -149,7 +154,7 @@ public class RideActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     }
                 })
-                .waypoints(rideSnapshot.getStart().getLocation(), rideSnapshot.getEnd().getLocation())
+                .waypoints(getLatLng(rideSnapshot.getStart().getLocation()), getLatLng(rideSnapshot.getEnd().getLocation()))
                 .build();
         routing.execute();
     }

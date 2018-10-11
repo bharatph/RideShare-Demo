@@ -19,7 +19,9 @@ public class VehicleType {
     private String typeImage;
     
     
-    
+    public VehicleType(){
+
+    }
     /**
      * @generated
      */

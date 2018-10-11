@@ -4,6 +4,7 @@ import java.util.Date;
 import android.media.Image;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.firestore.GeoPoint;
 
 /**
 * @generated
@@ -18,7 +19,7 @@ public class Node {
     /**
     * @generated
     */
-    private LatLng location;
+    private GeoPoint location;
     
     /**
     * @generated
@@ -26,16 +27,17 @@ public class Node {
     private Date timeDelta;
     
     
-    
+    public Node(){
+
+    }
     /**
      * @generated
      */
-    public Node(String locationName, Date timeDelta, LatLng location) {
+    public Node(String locationName, Date timeDelta, GeoPoint location) {
         this.locationName = locationName;
         this.timeDelta = timeDelta;
         this.location = location;
     }
-    
 
     /**
     * @generated
@@ -55,14 +57,14 @@ public class Node {
     /**
     * @generated
     */
-    public LatLng getLocation() {
+    public GeoPoint getLocation() {
         return this.location;
     }
     
     /**
     * @generated
     */
-    public void setLocation(LatLng location) {
+    public void setLocation(GeoPoint location) {
         this.location = location;
     }
     

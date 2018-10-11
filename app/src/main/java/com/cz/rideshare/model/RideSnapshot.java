@@ -60,7 +60,9 @@ public class RideSnapshot {
 
     private float price;
     
-    
+    public RideSnapshot(){
+
+    }
     
     /**
      * @generated

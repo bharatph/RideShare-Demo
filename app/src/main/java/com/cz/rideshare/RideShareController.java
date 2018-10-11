@@ -9,6 +9,8 @@ import com.cz.rideshare.model.User;
 import com.cz.rideshare.model.Verification;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONObject;
 
@@ -29,6 +31,9 @@ class RideShareController {
 
     public User user = null;
     private RideSnapshot rideSnapshot = null;
+    private CollectionReference rideSnapshots;
+    private CollectionReference users;
+    private FirebaseFirestore db;
 
     public void setRideSnapshot(RideSnapshot rideSnapshot){
         this.rideSnapshot = rideSnapshot;
@@ -40,7 +45,7 @@ class RideShareController {
     public void setUser(FirebaseUser fUser) {
 
         //TODO parse JSON from Firebase
-        user = new User(fUser.getUid(), fUser.getDisplayName(), fUser.getEmail(), new Rating(45, 34), Gender.MALE, new ArrayList<RideSnapshot>(), fUser.getPhoneNumber(), new Date(), "", fUser.getPhotoUrl(), new Date(), new ArrayList<Verification>());
+        user = new User(fUser.getUid(), fUser.getDisplayName(), fUser.getEmail(), new Rating(45, 34), Gender.MALE, new ArrayList<RideSnapshot>(), fUser.getPhoneNumber(), new Date(), "", fUser.getPhotoUrl().toString(), new Date(), new ArrayList<Verification>());
 
     }
 
@@ -48,14 +53,25 @@ class RideShareController {
         //get settings from local store
 
         //initializing with initial values, so it's never null
+        db = FirebaseFirestore.getInstance();
+        rideSnapshots = db.collection("snapshots");
+        users = db.collection("users");
 
 
         ArrayList<Verification> verifications = new ArrayList<Verification>();
-
         verifications.add(new Verification("Mobile Number Verified", true));
         verifications.add(new Verification("Email Verified", true));
         verifications.add(new Verification("Licence Verified", false));
         verifications.add(new Verification("208 Facebook Friends", true));
-        user = new User("0", "User", "", new Rating(0, 0), Gender.MALE, new ArrayList<RideSnapshot>(), "", new Date(), "", null, new Date(), verifications);
+        user = new User("0", "User", "", new Rating(0, 0), Gender.MALE, null, "", new Date(), "", null, new Date(), verifications);
+    }
+
+    public CollectionReference getRideSnapshotsRef(){
+        return rideSnapshots;
+    }
+
+
+    public CollectionReference getUsersRef() {
+        return users;
     }
 }

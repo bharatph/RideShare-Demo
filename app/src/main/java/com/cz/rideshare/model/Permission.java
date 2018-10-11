@@ -20,7 +20,9 @@ public class Permission {
 
     private boolean isAllowed = false;
 
+    public Permission(){
 
+    }
     /**
      * @generated
      */

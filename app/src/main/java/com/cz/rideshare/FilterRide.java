@@ -20,6 +20,7 @@ import com.cz.rideshare.model.Vehicle;
 import com.cz.rideshare.model.VehicleType;
 import com.cz.rideshare.view.RideshareToolbar;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.firestore.GeoPoint;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,9 +51,9 @@ public class FilterRide extends AppCompatActivity {
         User user = new User("78", "John Doe", "someone@someone.com", new Rating(5, 10f),
                 Gender.MALE,
                 null, "+91 99999 99999",
-                new Date(), "dsfs", Uri.parse("http://hardikmanktala.com/projects/themes/signe/demo/assets/images/people/people1.jpg"), new Date(), null);
+                new Date(), "dsfs", "http://hardikmanktala.com/projects/themes/signe/demo/assets/images/people/people1.jpg", new Date(), null);
         final RideSnapshot rideSnapshot = new RideSnapshot(20, 365f,
-                new Node("RMK College", new Date(), new LatLng(13.357659, 80.142839)), null,
+                new Node("RMK College", new Date(), new GeoPoint(13.357659, 80.142839)), null,
                 new Vehicle("Suzuki Honda",
                         2,
                         "TN-XX XXXX",
@@ -61,7 +62,7 @@ public class FilterRide extends AppCompatActivity {
                         null),
                 null,
                 null, new Date(),
-                new Node("CZ Smart Mobility", new Date(), new LatLng(12.899488, 80.235022)), new Rating(5,10f), user);
+                new Node("CZ Smart Mobility", new Date(), new GeoPoint(12.899488, 80.235022)), new Rating(5,10f), user);
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);
         rideSnapshots.add(rideSnapshot);

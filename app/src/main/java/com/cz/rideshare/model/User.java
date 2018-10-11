@@ -1,78 +1,73 @@
 package com.cz.rideshare.model;
 
-import android.net.Uri;
-import android.text.TextUtils;
-
-import com.bumptech.glide.load.engine.Resource;
-
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
-* @generated
-*/
+ * @generated
+ */
 public class User {
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String name;
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String id;
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String phoneNumber;
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private ArrayList<RideSnapshot> ridesOfferedSnapshot;
 
     private String email;
+    private String displayPicture;
+
     /**
-    * @generated
-    */
-    private Uri displayPicture;
-    
-    /**
-    * @generated
-    */
+     * @generated
+     */
     private Rating rating;
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private String bio;
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Gender gender;
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Date memberSince;
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     private Date lastOnline;
 
     private ArrayList<Verification> verifications;
 
 
-    
+    public User() {
+
+    }
+
     /**
      * @generated
      */
     public User(String id, String name, String email, Rating rating, Gender gender, ArrayList<RideSnapshot> ridesOfferedSnapshot, String phoneNumber,
-                Date memberSince, String bio, Uri displayPicture, Date lastOnline, ArrayList<Verification> verifications) {
+                Date memberSince, String bio, String displayPicture, Date lastOnline, ArrayList<Verification> verifications) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -86,42 +81,42 @@ public class User {
         this.lastOnline = lastOnline;
         this.verifications = verifications;
     }
-    
+
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getName() {
-        if(name != null && !name.isEmpty()) return this.name;
-        return name="User";
+        if (name != null && !name.isEmpty()) return this.name;
+        return name = "User";
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setName(String name) {
         this.name = name;
     }
 
 
-    public String getEmail(){
+    public String getEmail() {
         return this.email;
     }
 
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getId() {
         return this.id;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setId(String id) {
         this.id = id;
     }
@@ -135,128 +130,127 @@ public class User {
     }
 
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public ArrayList<RideSnapshot> getRidesOfferedSnapshot() {
         return this.ridesOfferedSnapshot;
     }
-    
+
     /**
-    * @generated
      * @param ridesOfferedSnapshot
-    */
+     * @generated
+     */
     public void setRidesOfferedSnapshot(ArrayList<RideSnapshot> ridesOfferedSnapshot) {
         this.ridesOfferedSnapshot = ridesOfferedSnapshot;
     }
-    
-    
-    /**
-    * @generated
-    */
-    public Uri getDisplayPicture() {
 
-        if(displayPicture != null && !displayPicture.toString().isEmpty()) return this.displayPicture;
-        return displayPicture = Uri.parse("android.resource://com.cz.rideshare/drawable/user_null");
-    }
-    
+
     /**
-    * @generated
-    */
-    public void setDisplayPicture(Uri displayPicture) {
+     * @generated
+     */
+    public String getDisplayPicture() {
+
+        if (displayPicture != null && !displayPicture.toString().isEmpty())
+            return this.displayPicture;
+        return displayPicture = "android.resource://com.cz.rideshare/drawable/user_null";
+    }
+
+    /**
+     * @generated
+     */
+    public void setDisplayPicture(String displayPicture) {
         this.displayPicture = displayPicture;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Rating getRating() {
         return this.rating;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setRating(Rating rating) {
         this.rating = rating;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public String getBio() {
         return this.bio;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setBio(String bio) {
         this.bio = bio;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Gender getGender() {
         return this.gender;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Date getMemberSince() {
         return this.memberSince;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setMemberSince(Date memberSince) {
         this.memberSince = memberSince;
     }
-    
-    
+
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public Date getLastOnline() {
         return this.lastOnline;
     }
-    
+
     /**
-    * @generated
-    */
+     * @generated
+     */
     public void setLastOnline(Date lastOnline) {
         this.lastOnline = lastOnline;
     }
-    
-    
-    
-    
+
+
 }
