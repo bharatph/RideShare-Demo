@@ -3,6 +3,7 @@ package com.cz.rideshare;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v13.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,7 +77,7 @@ public class FilterRide extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new RideSnapshotListAdpater(this, rideSnapshots, new RecyclerViewItemClickListener() {
             @Override
-            public void onCLick(View v, int position) {
+            public void onClick(View v, int position) {
                 Intent i = new Intent(context, RideDetailed.class);
                 RideShareController.getInstance().setRideSnapshot(rideSnapshot);
                 startActivity(i);

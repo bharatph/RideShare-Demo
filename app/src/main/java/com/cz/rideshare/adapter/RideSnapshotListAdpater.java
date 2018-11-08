@@ -115,7 +115,7 @@ public class RideSnapshotListAdpater extends RecyclerView.Adapter<RideSnapshotLi
                 @Override
                 public void onClick(View v) {
                     if (clickListener != null)
-                        clickListener.onCLick(v, getAdapterPosition());
+                        clickListener.onClick(v, getAdapterPosition());
                 }
             });
             rideImage = itemView.findViewById(R.id.snapshotRideImage);
